@@ -8,7 +8,7 @@
             label="File input"
             placeholder="Select your file"
             :clearable="false"
-      
+
             @change="onFileChange($event)"
         >
             <template  v-slot:append>
@@ -71,9 +71,6 @@ export default {
         this.ocbsArrayFiltered = arenaReportFiltered;
         this.isExcel = isExcel;
         this.withSite = withSite
-
-
-
     },
 
     async proceedAction() {
@@ -103,7 +100,6 @@ export default {
           console.error(error);
           this.loading = false
           Toast.fire("Error!", "Excel import denied", "error");
-
       }
 
     },

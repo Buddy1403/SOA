@@ -106,6 +106,6 @@ export default {
         editmode: Boolean,
         depositReplenishText: Object,
     },
-   
+
 };
 </script>

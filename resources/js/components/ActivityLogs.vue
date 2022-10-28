@@ -11,8 +11,8 @@
                     class="mx-4 tfield"
                     clearable
                 >
-                    <template v-slot:prepend-inner>        
-                        <v-icon outlined dark color="#8DA90B">mdi-magnify</v-icon> 
+                    <template v-slot:prepend-inner>
+                        <v-icon outlined dark color="#8DA90B">mdi-magnify</v-icon>
                     </template>
                 </v-text-field>
             </v-card-title>
@@ -24,7 +24,7 @@
                     class="elevation-1 ma-4 custom-tbl"
                 >
                 <template  style="font-size:16px;"  v-for="header in activityHeaders" v-slot:[`header.${header.value}`]="{ header }">
-                    <v-icon medium color="#8DA90B">{{ header.icon }}</v-icon>
+                    <v-icon medium color="#8DA90B"> {{ header.icon }}</v-icon>
                     <span style="color:#8DA90B"> &nbsp;{{ header.text }} </span>
                 </template>
                 <template v-slot:[`item.date`]="{ item }">
@@ -112,7 +112,7 @@
         border-radius: 20px;
         box-shadow: none;
     }
-    
+
     .tfield{
         border-bottom-color: #8DA90B;
     }

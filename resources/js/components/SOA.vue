@@ -34,8 +34,8 @@
                                 @click:clear="handleClear"
                                 v-on:keyup.enter="searchCentralize()"
                             >
-                            <template v-slot:prepend-inner>        
-                                <v-icon outlined dark color="#8DA90B">mdi-magnify</v-icon> 
+                            <template v-slot:prepend-inner>
+                                <v-icon outlined dark color="#8DA90B">mdi-magnify</v-icon>
                             </template>
                          </v-text-field>
                         </v-col>
@@ -140,7 +140,7 @@
                             class="p-3"
                         >
                             <v-spacer></v-spacer>
-                        
+
                             <v-tab
                                 v-for="item in items"
                                 class="custom-tabs"
@@ -389,7 +389,7 @@
                                                             "
                                                             class="fr-notif"
                                                             ><i>*Please note that the reflected total commision is already
-                                                            net of the 2% withholding tax.
+                                                            net of withholding tax.
                                                             Please see attached acknowledgement receipt for the details.</i></span
                                                         >
                                                     </v-row>
@@ -536,7 +536,7 @@ import {
     moneyFormat,
     defineEmail,
     defineContact,
-} 
+}
 from "../utility";
 import VueHtml2pdf from "vue-html2pdf";
 import moment from "moment";
@@ -805,7 +805,7 @@ export default {
             ) {
 
                 await this.searchCentralize(site);
-            } 
+            }
             else if (
                 site &&
                 this.tab === "converted" &&
@@ -862,7 +862,7 @@ export default {
 
         async handleClear(){
             this.tab === 'ongoing' ? await this.soaLists() : await this.importWithStatus()
-        }, 
+        },
 
         handleSelected(value) {
             // $emit Selected imports from table-soa component
@@ -876,7 +876,7 @@ export default {
             this.dates = value;
             // console.log(this.dates);
         },
-       
+
         revertTab(item) {
             // $emit return to default menu tab (ongoing) from date-range component
             this.tab = item;
@@ -954,7 +954,7 @@ export default {
 
             const status =  tabItem === 'ongoing' || (!tabItem && this.tab ==='ongoing') ? null : 'done'
             const {data} = await axios.get(`api/searchSoa?&search=${this.searchArenaParams}&site=${site}&status=${status}&dateFrom=${this.dates[0]}&dateTo=${to}&page=${this.page}&per_page=${parseInt(localStorage.getItem('itemsPerPage'))}`);
-            
+
             this.arenaData = data.data;
             console.log('data',data);
             return data;
@@ -1066,7 +1066,7 @@ export default {
 
         window.addEventListener("scroll", this.handleScroll);
     },
-    
+
 };
 
 </script>

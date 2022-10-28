@@ -420,7 +420,7 @@
                     </div>
                 </div>
                 <div class="pa-0" style=" margin-left:-30px; padding: 0">
-                    
+
                     <div
                         class="d-flex align-center justify-end computation-wrapper_field"
                     >
