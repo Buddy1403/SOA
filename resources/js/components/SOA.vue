@@ -953,7 +953,7 @@ export default {
             .format("YYYY-MM-DD");
 
             const status =  tabItem === 'ongoing' || (!tabItem && this.tab ==='ongoing') ? null : 'done'
-            const {data} = await axios.get(`api/searchSoa?&search=${this.searchArenaParams}&site=${site}&status=${status}&dateFrom=${this.dates[0]}&dateTo=${to}&page=${this.page}&per_page=${parseInt(localStorage.getItem('itemsPerPage'))}`);
+            const {data} = await axios.get(`api/searchSoa?&search=${this.searchArenaParams}&site=${site}&status=${status}&dateFrom=${this.dates[0]}&dateTo=${to}&page=${this.pageNumber}&per_page=${parseInt(localStorage.getItem('itemsPerPage'))}`);
 
             this.arenaData = data.data;
             console.log('data',data);

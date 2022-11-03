@@ -261,77 +261,7 @@
                             </div>
                         </div>
                     </div>
-                    <div
-                        class="d-flex align-center justify-end computation-wrapper_field"
-                    >
-                        <span class="font-weight-bold custom-label ctotal-label"
-                            >Net Operator's Commission:</span
-                        >
-                        <div
-                            class="d-flex align-center computation-container_field"
-                        >
-                            <span class="operation">=</span>
-                            <div
-                                class="custom-span computation-span d-flex align-center computation-total"
-                            >
-                                <span>{{ moneyFormat(computation.netOpCommission) }}</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div
-                        class="d-flex align-center justify-end computation-wrapper_field"
-                    >
-                        <span class="custom-label">Other Commission - M:</span>
-                        <div
-                            class="d-flex align-center computation-container_field"
-                        >
-                            <span class="operation">+</span>
-                            <div
-                                class="custom-span computation-span d-flex align-center"
 
-                            >
-                                <span>{{
-                                    moneyFormat(computation.otherCommissionIntel05)
-                                }}</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div
-                        class="d-flex align-center justify-end computation-wrapper_field"
-                    >
-                        <span class="custom-label"
-                            >Consolidator's Commission:</span
-                        >
-                        <div
-                            class="d-flex align-center computation-container_field"
-                        >
-                            <span class="operation">-</span>
-                            <div
-                                class="custom-span computation-span d-flex align-center"
-
-                            >
-                                <span>{{
-                                    moneyFormat(computation.totalConsolComm)
-                                }}</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div
-                        class="d-flex align-center justify-end computation-wrapper_field"
-                    >
-                        <span class="custom-label">Safety Fund:</span>
-                        <div
-                            class="d-flex align-center computation-container_field"
-                        >
-                            <span class="operation">-</span>
-                            <div
-                                class="custom-span computation-span d-flex align-center"
-
-                            >
-                                <span>{{ moneyFormat(computation.totalSafetyFund) }}</span>
-                            </div>
-                        </div>
-                    </div>
                     <div
                         class="d-flex align-center justify-end computation-wrapper_field"
                     >
@@ -352,11 +282,48 @@
                             </div>
                         </div>
                     </div>
+
                     <div
                         class="d-flex align-center justify-end computation-wrapper_field"
                     >
                         <span class="font-weight-bold custom-label ctotal-label"
-                            >Total Commission.<font color="red">*</font></span
+                            >Net Operator's Commission:</span
+                        >
+                        <div
+                            class="d-flex align-center computation-container_field"
+                        >
+                            <span class="operation">=</span>
+                            <div
+                                class="custom-span computation-span d-flex align-center computation-total"
+                            >
+                                <span>{{ moneyFormat(computation.netOpCommission) }}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                        class="d-flex align-center justify-end computation-wrapper_field"
+                    >
+                        <span class="font-weight-bold custom-label ctotal-label"
+                            >Withholding Tax:</span
+                        >
+                        <div
+                            class="d-flex align-center computation-container_field"
+                        >
+                            <span class="operation">=</span>
+                            <div
+                                class="custom-span computation-span d-flex align-center computation-total"
+                            >
+                                <span>{{ moneyFormat(computation.lessWithHoldingTax) }}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                        class="d-flex align-center justify-end computation-wrapper_field"
+                    >
+                        <span class="font-weight-bold custom-label ctotal-label"
+                            >Net Operator's Commision, after tax:</span
                         >
                         <div
                             class="d-flex align-center computation-container_field bordertop"
@@ -366,7 +333,7 @@
                                 class="custom-span computation-span d-flex align-center computation-total"
                             >
                                 <span class="ctotal-text">{{
-                                    moneyFormat(computation.totalCommission, true)
+                                    moneyFormat(computation.totalNetCommWithTax, true)
                                 }}</span>
                             </div>
                         </div>
@@ -476,6 +443,26 @@
                             </div>
                         </div>
                     </div>
+                    <div
+                        class="d-flex align-center justify-end computation-wrapper_field"
+                    >
+                        <span class="custom-label"
+                            >Cash Withdrawal from Mobile:</span
+                        >
+                        <div
+                            class="d-flex align-center computation-container_field"
+                        >
+                            <span class="operation">-</span>
+                            <div
+                                class="custom-span computation-span d-flex align-center"
+
+                            >
+                                <span>
+                                    {{emailFormat}}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </v-row>
@@ -491,9 +478,10 @@ export default {
         editmode: Boolean,
         commissionPercent: Number,
         depositReplenishTxt: Object,
+        emailFormat: String,
     },
     data: () => ({
-        moneyFormat
+        moneyFormat,
     })
 };
 </script>
