@@ -19,6 +19,7 @@
                             <span>{{ moneyFormat(computation.totalMWBets) }}</span>
                         </div>
                     </div>
+
                     <div
                         class="d-flex align-center justify-end computation-wrapper_field"
                     >
@@ -143,6 +144,7 @@
                         </div>
                     </div>
                     <div
+                        v-if="computation.arena_details.email_details[0].email != 'dea.greatpeak@gmail.com'"
                         class="d-flex align-center justify-end computation-wrapper_field"
                     >
                         <span class="custom-label"
@@ -160,6 +162,7 @@
                         </div>
                     </div>
                     <div
+                        v-if="computation.arena_details.email_details[0].email != 'dea.greatpeak@gmail.com'"
                         class="d-flex align-center justify-end computation-wrapper_field"
                     >
                         <span class="custom-label">Draw*{{ commissionPercent * 100 }}% (kiosk):</span
@@ -176,6 +179,7 @@
                         </div>
                     </div>
                     <div
+                        v-if="computation.arena_details.email_details[0].email != 'dea.greatpeak@gmail.com'"
                         class="d-flex align-center justify-end computation-wrapper_field"
                     >
                         <span class="custom-label"
@@ -195,6 +199,7 @@
                         </div>
                     </div>
                     <div
+                        v-if="computation.arena_details.email_details[0].email != 'dea.greatpeak@gmail.com'"
                         class="d-flex align-center justify-end computation-wrapper_field"
                     >
                         <span class="custom-label"
@@ -246,6 +251,7 @@
                         </div>
                     </div>
                     <div
+                        v-if="computation.arena_details.email_details[0].email != 'dea.greatpeak@gmail.com'"
                         class="d-flex align-center justify-end computation-wrapper_field"
                     >
                         <span class="custom-label">Sales Deduction:</span>
@@ -263,6 +269,7 @@
                     </div>
 
                     <div
+                        v-if="computation.arena_details.email_details[0].email != 'dea.greatpeak@gmail.com'"
                         class="d-flex align-center justify-end computation-wrapper_field"
                     >
                         <span class="custom-label"
@@ -284,6 +291,7 @@
                     </div>
 
                     <div
+                        v-if="computation.arena_details.email_details[0].email != 'dea.greatpeak@gmail.com'"
                         class="d-flex align-center justify-end computation-wrapper_field"
                     >
                         <span class="font-weight-bold custom-label ctotal-label"
@@ -302,6 +310,7 @@
                     </div>
 
                     <div
+                        v-if="computation.arena_details.email_details[0].email != 'dea.greatpeak@gmail.com'"
                         class="d-flex align-center justify-end computation-wrapper_field"
                     >
                         <span class="font-weight-bold custom-label ctotal-label"
@@ -313,6 +322,7 @@
                             <span class="operation">=</span>
                             <div
                                 class="custom-span computation-span d-flex align-center computation-total"
+                                style="background-color: rgb(174,185,203);"
                             >
                                 <span>{{ moneyFormat(computation.lessWithHoldingTax) }}</span>
                             </div>
@@ -320,6 +330,7 @@
                     </div>
 
                     <div
+                        v-if="computation.arena_details.email_details[0].email != 'dea.greatpeak@gmail.com'"
                         class="d-flex align-center justify-end computation-wrapper_field"
                     >
                         <span class="font-weight-bold custom-label ctotal-label"
@@ -338,56 +349,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </v-row>
-        <v-row class="row-compute">
-            <div class="d-flex mobile-computebox">
-                <div>
-                    <div
-                        class="d-flex justify-center align-center kiosk-mobile_text"
-                    >
-                        <span>(Mobile)</span>
-                    </div>
-                    <div
-                        class="d-flex align-center justify-end computation-wrapper_field"
-                        style="margin-right: 2rem"
-                    >
-                        <span class="custom-label">Total M/W Bets:</span>
-                        <div
-                            class="d-flex align-center computation-container_field"
-                        >
-                            <div
-                                class="custom-span computation-span d-flex align-center"
-
-                            >
-                                <span>{{
-                                    moneyFormat(computation.totalMWMobile)
-                                }}</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div
-                        class="d-flex align-center justify-end computation-wrapper_field"
-                        style="margin-right: 2rem"
-                    >
-                        <span class="custom-label">Total Draw Bets:</span>
-                        <div
-                            class="d-flex align-center computation-container_field"
-                        >
-                            <div
-                                class="custom-span computation-span d-flex align-center"
-
-                            >
-                                <span>{{
-                                    moneyFormat(computation.drawMobile)
-                                }}</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="pa-0" style=" margin-left:-30px; padding: 0">
-
                     <div
                         class="d-flex align-center justify-end computation-wrapper_field"
                     >
@@ -443,23 +404,48 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </v-row>
+        <v-row class="row-compute">
+            <div class="d-flex mobile-computebox" :style="[computation.arena_details.email_details[0].email != 'dea.greatpeak@gmail.com' ? {'margin-top': '-85px'} : {'margin-top': '50px'}]">
+                <div>
+                    <div
+                        class="d-flex justify-center align-center kiosk-mobile_text"
+                    >
+                        <span>(Mobile)</span>
+                    </div>
                     <div
                         class="d-flex align-center justify-end computation-wrapper_field"
                     >
-                        <span class="custom-label"
-                            >Cash Withdrawal from Mobile:</span
-                        >
+                        <span class="custom-label">Total M/W Bets:</span>
                         <div
                             class="d-flex align-center computation-container_field"
                         >
-                            <span class="operation">-</span>
                             <div
                                 class="custom-span computation-span d-flex align-center"
 
                             >
-                                <span>
-                                    {{emailFormat}}
-                                </span>
+                                <span>{{
+                                    moneyFormat(computation.totalMWMobile)
+                                }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="d-flex align-center justify-end computation-wrapper_field"
+                    >
+                        <span class="custom-label">Total Draw Bets:</span>
+                        <div
+                            class="d-flex align-center computation-container_field"
+                        >
+                            <div
+                                class="custom-span computation-span d-flex align-center"
+
+                            >
+                                <span>{{
+                                    moneyFormat(computation.drawMobile)
+                                }}</span>
                             </div>
                         </div>
                     </div>
@@ -470,7 +456,7 @@
 </template>
 
 <script>
-import {moneyFormat} from "../../utility/format"
+import {moneyFormat} from "../../utility/format";
 export default {
     name: "ComputeBox",
     props: {
@@ -482,6 +468,6 @@ export default {
     },
     data: () => ({
         moneyFormat,
-    })
+    }),
 };
 </script>

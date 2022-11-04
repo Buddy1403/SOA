@@ -22,6 +22,7 @@ class AddAdditionalToImportsTable extends Migration
             $table->string('consolidatorsCommission')->default(0);
             $table->string('safetyFund')->default(0);
             $table->string('paymentForOutstandingBalance')->default(0);
+            $table->string('otherDeductiblesFromComm')->default(0);
             $table->string('systemErrorCOArmsi')->default(0);
             $table->string('cashLoad')->default(0);
             $table->string('cashWithdrawal')->default(0);

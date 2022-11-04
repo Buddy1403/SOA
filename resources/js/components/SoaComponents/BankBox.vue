@@ -31,6 +31,7 @@
                             ? bankAccounts[0].bank_number
                             : "0050-1001-5156"
                     }}</span>
+                    <span>{{ emailFormat }}</span>
                 </div>
 
                 <div v-show="bankAccounts.length >= 2" class="or">OR</div>
@@ -82,8 +83,8 @@
                             arenaDetails.bank_details.length > 0
                                 ? arenaDetails.bank_details[0].bank_name
                                 : ""
-                        }}</span
-                    >
+                        }}
+                    </span>
                     <span class="text-sm font-weight-medium detailed">{{
                         arenaDetails &&
                         arenaDetails.bank_details &&
@@ -105,6 +106,7 @@ export default {
         operatorName: String,
         editmode: Boolean,
         depositReplenishText: Object,
+        emailFormat: String,
     },
 
 };

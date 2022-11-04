@@ -42,6 +42,7 @@
                                     : { arena: item.arena_name }
                             "
                             :arenaName="item.arena_name"
+                            :emailDetails="item.email_details"
                             :emailFormat="
                                 item.arena_details
                                     ? defineEmail(
@@ -62,13 +63,6 @@
                         <div class="computation-banner">Computation</div>
                     </v-row>
                     <ComputeBox
-                        :emailFormat="
-                            item.arena_details
-                                ? defineEmail(
-                                        item.arena_details.email_details
-                                    )
-                                : ''
-                        "
                         :computation="computationSoa(item)"
                         :commissionPercent="commission_percent"
                         :depositReplenishTxt="
