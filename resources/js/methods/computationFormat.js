@@ -28,11 +28,17 @@ const computationSoa = (data) => {
     const totalPayOutBal =
         parseFloat(paymentForOutstandingBalance) + parseFloat(payOutsBalMob);
 
+    //2%
+    const mwTwoPer = data.mwTwo;
+    const drawTwoPer = data.drawTwo;
+
     //LESS WITH HOLDING TAX
 
-    const lessWithHoldingTax = parseFloat(netOpCommission * 0.2 * 0.02).toFixed(2);
+    const totalComm1 = parseFloat(mwTwoPer) + parseFloat(drawTwoPer);
+
+    const lessWithHoldingTax = parseFloat(totalComm1 * 0.2 * 0.02).toFixed(2);
     const totalNetComm = parseFloat(netOpCommission) + parseFloat(lessWithHoldingTax);
-    const totalNetCommWithTax = parseFloat(netOpCommission) - parseFloat(lessWithHoldingTax);
+    const totalNetCommWithTax = parseFloat(netOpCommission) + parseFloat(lessWithHoldingTax);
 
 
 
