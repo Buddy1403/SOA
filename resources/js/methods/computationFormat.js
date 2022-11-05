@@ -38,7 +38,7 @@ const computationSoa = (data) => {
 
     const lessWithHoldingTax = parseFloat(totalComm1 * 0.2 * 0.02).toFixed(2);
     const totalNetComm = parseFloat(netOpCommission) + parseFloat(lessWithHoldingTax);
-    const totalNetCommWithTax = parseFloat(netOpCommission) + parseFloat(lessWithHoldingTax);
+    const totalNetCommWithTax = parseFloat(netOpCommission) - parseFloat(lessWithHoldingTax);
 
 
 
