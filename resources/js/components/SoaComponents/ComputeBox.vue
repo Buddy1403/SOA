@@ -289,6 +289,27 @@
                             </div>
                         </div>
                     </div>
+                    <div
+                        v-if="computation.arena_details.email_details[0].email != 'dea.greatpeak@gmail.com'"
+                        class="d-flex align-center justify-end computation-wrapper_field"
+                    >
+                        <span class="custom-label"
+                            >Other Deductibles from Commission:</span
+                        >
+                        <div
+                            class="d-flex align-center computation-container_field"
+                        >
+                            <span class="operation">-</span>
+                            <div
+                                class="custom-span computation-span d-flex align-center"
+
+                            >
+                                <span>{{
+                                    moneyFormat(computation.otherDeductiblesFromCommission)
+                                }}</span>
+                            </div>
+                        </div>
+                    </div>
 
                     <div
                         v-if="computation.arena_details.email_details[0].email != 'dea.greatpeak@gmail.com'"

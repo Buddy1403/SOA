@@ -380,18 +380,7 @@
                                                                 depRep.depositReplenishText
                                                             "
                                                         />
-                                                         <span
-                                                            v-if="
-                                                                depRep
-                                                                    .depositReplenishText
-                                                                    .dateText ===
-                                                                'FR'
-                                                            "
-                                                            class="fr-notif"
-                                                            ><i>*Please note that the reflected total commision is already
-                                                            net of withholding tax.
-                                                            Please see attached acknowledgement receipt for the details.</i></span
-                                                        >
+
                                                     </v-row>
 
                                                     <SignatoryBox
@@ -645,7 +634,7 @@ export default {
             computationSoa,
             signsArray: [],
             progressText: null,
-            printReadyProgress: 0,
+            printReadyProgress: 100,
             total: 0,
             page: 0,
             numberOfPages: 0,
@@ -867,9 +856,10 @@ export default {
         handleSelected(value) {
             // $emit Selected imports from table-soa component
             this.selected = value;
+
             console.log("SELECTED", value);
             if (value.length < 1)
-                (this.signsArray = []), (this.printReadyProgress = 0);
+                (this.signsArray = []), (this.printReadyProgress = 100);
         },
         getDates(value) {
             // $emit get dates from date-range component

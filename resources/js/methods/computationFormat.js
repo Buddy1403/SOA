@@ -15,6 +15,7 @@ const computationSoa = (data) => {
     const netOpCommission = data.netOperatorsCommission;
     const consolidatorsCommission = data.consolidatorsCommission;
     const paymentForOutstandingBalance = data.paymentForOutstandingBalance;
+    const otherDeductiblesFromCommission = data.otherDeductiblesFromCommission;
     const safetyFund = data.safetyFund;
     const safetyFundMob = data.safetyFundMob;
     const otherCommIntMob = data.otherCommIntMob;
@@ -38,7 +39,7 @@ const computationSoa = (data) => {
 
     const lessWithHoldingTax = parseFloat(totalComm1 * 0.2 * 0.02).toFixed(2);
     const totalNetComm = parseFloat(netOpCommission) + parseFloat(lessWithHoldingTax);
-    const totalNetCommWithTax = parseFloat(netOpCommission) - parseFloat(lessWithHoldingTax);
+    const totalNetCommWithTax = parseFloat(netOpCommission) - parseFloat(lessWithHoldingTax) - parseFloat(otherDeductiblesFromCommission);
 
 
 
@@ -61,6 +62,7 @@ const computationSoa = (data) => {
         consolidatorsCommission: totalConsolComm,
         totalConsolComm : totalConsolComm,
         paymentForOutstandingBalance: totalPayOutBal,
+        otherDeductiblesFromCommission : otherDeductiblesFromCommission,
         lessWithHoldingTax : lessWithHoldingTax,
         totalNetComm: totalNetComm,
         totalNetCommWithTax: totalNetCommWithTax,

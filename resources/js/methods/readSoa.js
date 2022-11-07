@@ -176,6 +176,7 @@ const readSoa = (event, isExcel, withSite) => {
                             otherCommIntMob: 0,
                             consolCommMob: 0,
                             payOutsBalMob: 0,
+                            otherDeductiblesFromCommission: 0,
                             ...data,
                         });
                     });
@@ -293,6 +294,8 @@ const readSoa = (event, isExcel, withSite) => {
                         const safetyFund = rest.safetyFund;
                         const paymentForOutstandingBalance =
                             rest.paymentForOutstandingBalance;
+                        const otherDeductiblesFromCommission =
+                            rest.otherDeductiblesFromCommission;
                         const totalCommission = rest.totalCommission;
                         const cashLoad = rest.cashLoad;
                         const cashWithdrawal =  rest.cashWithdrawal;
@@ -352,6 +355,7 @@ const readSoa = (event, isExcel, withSite) => {
                             consolidatorsCommission,
                             safetyFund,
                             paymentForOutstandingBalance,
+                            otherDeductiblesFromCommission,
                             totalCommission,
                             total_win_mobile: totalMWMobile,
                             draw_mobile: totalDrawMobile,
