@@ -1,6 +1,6 @@
 <template>
     <v-row
-        v-if="!arenaDetails.email_details[0].email.includes('dea.greatpeak@gmail.com')"
+
         class="bank-container"
         style="padding: 1px !important; height: auto; margin: 0 !important"
     >
