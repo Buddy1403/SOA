@@ -206,7 +206,7 @@ const readSoa = (event, isExcel, withSite) => {
                         objMobileKiosk[existingIndex].safetyFundMob =
                             item.safetyFund;
                         objMobileKiosk[existingIndex].otherCommIntMob =
-                            item.otherCommissionIntel05;
+                            item.otherCommissionIntel01;
                         objMobileKiosk[existingIndex].consolCommMob =
                             item.consolidatorsCommission;
                         objMobileKiosk[existingIndex].payOutsBalMob =
@@ -232,7 +232,7 @@ const readSoa = (event, isExcel, withSite) => {
                         helper[key].totalMWMobile = o.total;
                         helper[key].drawMobile = o.draw;
                         helper[key].safetyFundMob = o.safetyFund;
-                        helper[key].otherCommIntMob = o.otherCommissionIntel05;
+                        helper[key].otherCommIntMob = o.otherCommissionIntel01;
                         helper[key].consolCommMob = o.consolidatorsCommission;
                         helper[key].payOutsBalMob = o.paymentForOutstandingBalance;
                     }
@@ -288,7 +288,7 @@ const readSoa = (event, isExcel, withSite) => {
                         const netOperatorsCommission =
                             rest.netOperatorsCommission;
                         const otherCommissionIntel =
-                            rest.otherCommissionIntel05;
+                            rest.otherCommissionIntel01;
                         const consolidatorsCommission =
                             rest.consolidatorsCommission;
                         const safetyFund = rest.safetyFund;
@@ -351,7 +351,7 @@ const readSoa = (event, isExcel, withSite) => {
                             cancelled_unpaid: totalCUnpaid,
                             salesDeductionTablet: salesDeduction,
                             netOperatorsCommission,
-                            otherCommissionIntel05: otherCommissionIntel,
+                            otherCommissionIntel01: otherCommissionIntel,
                             consolidatorsCommission,
                             safetyFund,
                             paymentForOutstandingBalance,

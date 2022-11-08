@@ -7,7 +7,7 @@ const computationSoa = (data) => {
     const drawPaid = data.draw_paid;
     const cUnpaid = data.cancelled_unpaid;
     const salesDeduction = data.salesDeductionTablet;
-    const otherCommissionIntel05 = data.otherCommissionIntel05;
+    const otherCommissionIntel01 = data.otherCommissionIntel01;
     const totalMWMobile = data.total_win_mobile;
     const drawMobile = data.draw_mobile;
     const depositReplenish = data.for_total;
@@ -23,7 +23,7 @@ const computationSoa = (data) => {
     const payOutsBalMob = data.payOutsBalMob;
     const totalSafetyFund = parseFloat(safetyFund) + parseFloat(safetyFundMob);
     const totalOtherCommIntel =
-        parseFloat(otherCommissionIntel05) + parseFloat(otherCommIntMob);
+        parseFloat(otherCommissionIntel01) + parseFloat(otherCommIntMob);
     const totalConsolComm =
         parseFloat(consolidatorsCommission) + parseFloat(consolCommMob);
     const totalPayOutBal =
@@ -56,7 +56,7 @@ const computationSoa = (data) => {
         depositReplenish,
         drawMobile,
         totalMWMobile,
-        otherCommissionIntel05: totalOtherCommIntel,
+        otherCommissionIntel01: totalOtherCommIntel,
         safetyFund: totalSafetyFund,
         totalSafetyFund : totalSafetyFund,
         consolidatorsCommission: totalConsolComm,

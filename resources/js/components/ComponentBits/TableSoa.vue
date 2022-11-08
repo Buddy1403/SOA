@@ -158,6 +158,7 @@ export default {
         pagePosition: 1,
         paginationOption: {}
     }),
+
     methods: {
         //delete specific soa
        deleteOneSoa(id){
@@ -204,10 +205,12 @@ export default {
                 this.$emit('selectedSoa', [])
             };
         },
+
         resetTable(){
             console.log('xxxRESETxxxx')
             this.selected = []
         },
+
         singleSelected(item){
             this.$emit('selectedSoa', item)
         },
@@ -218,17 +221,11 @@ export default {
                   this.$emit('loading', true)
                     await this.fetchLists(localStorage.getItem('site'));
                     this.$emit('loading', false)
-
-
-
-
         },
+
         async handlePageCount(e){
-
             const perPage = Math.ceil((this.total/e))
-
             this.$emit('perPage', perPage)
-
         },
 
         handlePageOptions(e){
@@ -241,18 +238,17 @@ export default {
               ...e,
               itemsPerPage: this.perPage,
             }
-
-
         },
+
         pageOptions(){
             console.log('pageOptions')
             // this.paginationOption = {
             //   ...this.paginationOption,
             //   // page: parseInt(localStorage.getItem('page')),
             //   itemsPerPage: parseInt(localStorage.getItem('itemsPerPage')),
-
             // }
         },
+
         pageReset(){
            return this.paginationOption = {
               ...this.paginationOption,
@@ -261,8 +257,8 @@ export default {
 
             }
         }
-
     },
+
     computed: {
         perPagee() {
 
@@ -270,8 +266,6 @@ export default {
                 ...this.paginationOption,
                 itemsPerPage: this.perPage,
             }
-
-
             return paginationOpt
         }
     },

@@ -15,7 +15,7 @@
         class="elevation-1 text-center"
         :footer-props="{
             'items-per-page-options': itemsPerPageOptions,
-            
+
         }"
         :options="perPagee"
         :page="page"
@@ -26,15 +26,15 @@
          @update:options="handlePageOptions"
         @toggle-select-all="selectAllToggle"
         @input="singleSelected"
-    
+
     >
         <template v-slot:top="{ pagination, options, updateOptions }">
-            <v-data-footer 
+            <v-data-footer
                 :items-per-page-options ="itemsPerPageOptions"
                 :pagination="pagination"
                 :options="perPagee"
                 items-per-page-text="$vuetify.dataTable.itemsPerPageText"
-            
+
                 @update:options="handlePageOptions"
             />
         </template>
@@ -47,7 +47,7 @@
                         :readonly="item.disabled"
                         :disabled="item.arena_details ? false : true"
                         @input="select($event)"
-                    ></v-simple-checkbox> 
+                    ></v-simple-checkbox>
                 </td>
                 <td>
                     <p class="font-weight-bold text-left">{{item.date_of_soa}}</p>
@@ -81,14 +81,14 @@
                             </v-btn>
                         </template>
                         <span>View Account</span>
-                    </v-tooltip> 
+                    </v-tooltip>
                 </td>
             </tr>
 
         </template>
 
     </v-data-table>
-    <loading-progress :loading="loading" />    
+    <loading-progress :loading="loading" />
 </div>
 </template>
 <script>
@@ -103,7 +103,7 @@ export default {
         arenaData: Array,
         downloadingReport: Boolean,
         openModal: Function,
-        search: String, 
+        search: String,
         total: Number,
         page: Number,
         perPage: Number,
@@ -127,7 +127,7 @@ export default {
         selected: [],
         loading: false,
         pagePosition: 1,
-     
+
         paginationOption: {}
     }),
     methods: {
@@ -167,24 +167,24 @@ export default {
                   this.$emit('loading', true)
                     await this.fetchLists(localStorage.getItem('site'));
                     this.$emit('loading', false)
-            
-               
-           
+
+
+
         },
         async handlePageCount(e){
-         
+
             const perPage = Math.ceil((this.total/e))
-          
+
             this.$emit('perPage', perPage)
-           
+
         },
- 
+
         handlePageOptions(e){
             console.log('handlePageOptions',e.itemsPerPage)
-            
+
             e.itemsPerPage && localStorage.setItem('itemsPerPage', e.itemsPerPage)
             this.$emit('pageOption', e)
-       
+
             this.paginationOption = {
               ...e,
               itemsPerPage: this.perPage,
@@ -198,7 +198,6 @@ export default {
             //   ...this.paginationOption,
             //   // page: parseInt(localStorage.getItem('page')),
             //   itemsPerPage: parseInt(localStorage.getItem('itemsPerPage')),
-              
             // }
         },
         pageReset(){
@@ -206,14 +205,14 @@ export default {
               ...this.paginationOption,
               page: 1,
               itemsPerPage: parseInt(localStorage.getItem('itemsPerPage')),
-              
+
             }
         }
 
     },
     computed: {
         perPagee() {
-          
+
             const paginationOpt = {
                 ...this.paginationOption,
                 itemsPerPage: this.perPage,
