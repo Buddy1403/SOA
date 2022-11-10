@@ -345,7 +345,13 @@
                                 class="custom-span computation-span d-flex align-center computation-total"
                                 style="background-color: rgb(174,185,203);"
                             >
-                                <span>{{ moneyFormat(computation.lessWithHoldingTax) }}</span>
+                                <span v-if="computation.arena_details.area_code != 'MRA01'">
+                                    {{ moneyFormat(computation.lessWithHoldingTax) }}
+                                </span>
+                                <span v-else>
+                                    {{ moneyFormat(computation.specialWHT) }}
+                                </span>
+
                             </div>
                         </div>
                     </div>
@@ -365,7 +371,7 @@
                                 class="custom-span computation-span d-flex align-center computation-total"
                             >
                                 <span class="ctotal-text">{{
-                                    moneyFormat(computation.totalNetCommWithTax, true)
+                                    moneyFormat(computation.totalNetCommWithTax.toFixed(2), true)
                                 }}</span>
                             </div>
                         </div>

@@ -2,6 +2,7 @@ const computationSoa = (data) => {
 
     const totalMWBets = data.total_meron_wala;
     const drawCancelled = data.draw_cancelled;
+    const draw = data.draw;
     const totalPayoutPaid = data.total_payout_paid;
     const cdPaid = data.draw_cancelled_paid;
     const drawPaid = data.draw_paid;
@@ -33,13 +34,19 @@ const computationSoa = (data) => {
     const mwTwoPer = data.mwTwo;
     const drawTwoPer = data.drawTwo;
 
+
+    //LESS WITH HOLDING TAX (SEPCIAL)
+
+    const specialMRA = parseFloat(totalMWBets) + parseFloat(draw) ;
+    const specialWHT =parseFloat(specialMRA *0.015 * 0.2 * 0.02).toFixed(2);
+
     //LESS WITH HOLDING TAX
 
     const totalComm1 = parseFloat(mwTwoPer) + parseFloat(drawTwoPer);
 
     const lessWithHoldingTax = parseFloat(totalComm1 * 0.2 * 0.02).toFixed(2);
     const totalNetComm = parseFloat(netOpCommission) + parseFloat(lessWithHoldingTax);
-    const totalNetCommWithTax = parseFloat(netOpCommission) - parseFloat(lessWithHoldingTax) - parseFloat(otherDeductiblesFromCommission);
+    const totalNetCommWithTax = parseFloat(netOpCommission) + parseFloat(otherCommissionIntel01) - parseFloat(paymentForOutstandingBalance) - parseFloat(otherDeductiblesFromCommission) - parseFloat(lessWithHoldingTax) ;
 
 
 
@@ -66,6 +73,7 @@ const computationSoa = (data) => {
         lessWithHoldingTax : lessWithHoldingTax,
         totalNetComm: totalNetComm,
         totalNetCommWithTax: totalNetCommWithTax,
+        specialWHT: specialWHT,
         ...data,
     };
 
