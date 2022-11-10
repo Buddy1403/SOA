@@ -28,6 +28,15 @@
                                         <i class="fas fa-download circle-icon"></i>
                                         Download Arena Masterlist
                                         </v-btn>
+                                        <v-btn
+                                            color="#8DA90B"
+                                            dark
+                                            elevation="2"
+                                            @click="clearArena"
+                                        >
+                                        <i class="fas fa-trash circle-icon"></i>
+                                        ClEAR ARENA LIST
+                                        </v-btn>
                                     </v-col>
                                     <v-col>
                                         <v-file-input
@@ -1089,6 +1098,36 @@ export default {
                 if (result.value) {
                     this.form
                         .delete("api/arena/" + id)
+                        .then(() => {
+                            swal.fire(
+                                "Deleted!",
+                                "Your file has been deleted.",
+                                "success"
+                            );
+                            Fire.$emit("AfterCreate");
+                        })
+                        .catch(() => {
+                            swal.fire(
+                                "Deleted!",
+                                "Your file has been deleted.",
+                                "success"
+                            );
+                        });
+                }
+            });
+        },
+        clearArena(){
+            swal.fire({
+                title: "Clear Arena Details?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete all!",
+            }).then((result) => {
+                if (result.value) {
+                   axios.post("api/clearArena")
                         .then(() => {
                             swal.fire(
                                 "Deleted!",
