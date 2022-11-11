@@ -1,5 +1,5 @@
 <template>
-    <v-row class="signatory-container">
+    <v-row class="signatory-container" >
         <v-col>
             <v-row>
                 <div class="sign-wrapper d-flex align-center mt-2">
@@ -44,7 +44,7 @@
                             class="select-field_container d-flex justify-center align-center"
                         >
                             <span class="computation signed-text signed-text_name">{{
-                                formatArrayToString(prepared).name || 
+                                formatArrayToString(prepared).name ||
                                 "Clarise A. Valles"
                             }}</span>
                         </span>
@@ -70,14 +70,14 @@
                             class="select-field_container d-flex justify-center align-center"
                         >
                             <span class="computation signed-text signed-text_name">{{
-                                 formatArrayToString(checkSetOne).name || 
+                                 formatArrayToString(checkSetOne).name ||
                                 "Ma. Lourdes Anoba/Leo Tampilic Jr."
                             }}</span>
                         </span>
 
                         <span class="signed-title computation signed-text">
                             {{
-                                formatArrayToString(checkSetOne).position || 
+                                formatArrayToString(checkSetOne).position ||
                                 "QA - Team Leader"
                             }}
                         </span>
@@ -95,13 +95,13 @@
                     >
                         <span
                             class="select-field_container d-flex justify-center align-center"
-                           
+
                         >
                             <span
                                 class="computation signed-text signed-text_name"
-                               
+
                                 >{{
-                                     formatArrayToString(checkSetTwo).name || 
+                                     formatArrayToString(checkSetTwo).name ||
                                     "Mariel Pilotos / Jonalyn Bonares"
                                 }}</span
                             >
@@ -109,7 +109,7 @@
 
                         <span class="signed-title computation signed-text">
                             {{
-                                 formatArrayToString(checkSetTwo).position || 
+                                 formatArrayToString(checkSetTwo).position ||
                                 "Supervisor - Arena/OCBS"
                             }}
                         </span>
@@ -131,7 +131,7 @@ export default {
             prepared: [],
             checkSetOne: [],
             checkSetTwo: [],
-  
+
         };
     },
     methods: {
@@ -140,10 +140,10 @@ export default {
                 `api/getUsersSignatory/${signatory}`
             );
 
-    
+
             this.$emit('signed', signedUsers)
             console.log(signedUsers)
-        
+
            return signedUsers.data
         },
 
@@ -156,7 +156,7 @@ export default {
             this.checkSetOne = checkSetOneUser
             this.checkSetTwo = checkSetTwoUser
         },
-      
+
         formatArrayToString(array) {
             const formatSignName = array.map((sign) => (sign["name"]));
             const name = formatSignName.length > 1
