@@ -11,7 +11,7 @@ const computationSoa = (data) => {
     const otherCommissionIntel01 = data.otherCommissionIntel01;
     const totalMWMobile = data.total_win_mobile;
     const drawMobile = data.draw_mobile;
-    const depositReplenish = data.for_total;
+    const depositReplenish = parseFloat(data.for_total).toFixed(2);
     const totalCommission = data.totalCommission;
     const netOpCommission = data.netOperatorsCommission;
     const consolidatorsCommission = data.consolidatorsCommission;
@@ -31,6 +31,7 @@ const computationSoa = (data) => {
         parseFloat(paymentForOutstandingBalance) + parseFloat(payOutsBalMob);
     const otherCommissionGofw0005 = data.otherCommissionGofw0005;
 
+
     //2%
     const mwTwoPer = data.mwTwo;
     const drawTwoPer = data.drawTwo;
@@ -46,7 +47,7 @@ const computationSoa = (data) => {
     const totalComm1 = parseFloat(mwTwoPer) + parseFloat(drawTwoPer);
 
     const lessWithHoldingTax = parseFloat(totalComm1 * 0.2 * 0.02).toFixed(2);
-    const totalNetComm = parseFloat(netOpCommission) + parseFloat(lessWithHoldingTax);
+    const totalNetComm = parseFloat(netOpCommission).toFixed(2) + parseFloat(lessWithHoldingTax).toFixed(2);
     const totalNetCommWithTax = parseFloat(netOpCommission) + parseFloat(otherCommissionIntel01) - parseFloat(paymentForOutstandingBalance) - parseFloat(otherDeductiblesFromCommission) - parseFloat(lessWithHoldingTax) - parseFloat(otherCommissionGofw0005);
     const specialTotalNetCommWithTax = parseFloat(netOpCommission) + parseFloat(otherCommissionIntel01) - parseFloat(paymentForOutstandingBalance) - parseFloat(otherDeductiblesFromCommission) - parseFloat(specialWHT) - parseFloat(otherCommissionGofw0005);
 

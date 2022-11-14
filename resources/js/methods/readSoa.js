@@ -121,8 +121,8 @@ const readSoa = (event, isExcel, withSite) => {
                         : moment(date, "DD/MM/YYYY").isValid()
                         ? moment(date, "DD/MM/YYYY").format("YYYY-MM-DD LTS")
                         : moment(date).format("YYYY-MM-DD LTS");
-                const eventCreatedUTC = ExcelDateToJSDate(arrayData[1][2].A);
-                const eventClosedUTC = ExcelDateToJSDate(arrayData[1][4].A);
+                const eventCreatedUTC = ExcelDateToJSDate(arrayData[1][2].B);
+                const eventClosedUTC = ExcelDateToJSDate(arrayData[1][4].B);
 
                 // Validate if Event date is in a correct date format
                 const isValidEventArenaDate = (stringDate) =>
