@@ -2,6 +2,7 @@ const computationSoa = (data) => {
 
     const totalMWBets = data.total_meron_wala;
     const drawCancelled = data.draw_cancelled;
+    const draw = data.draw;
     const totalPayoutPaid = data.total_payout_paid;
     const cdPaid = data.draw_cancelled_paid;
     const drawPaid = data.draw_paid;
@@ -28,10 +29,17 @@ const computationSoa = (data) => {
         parseFloat(consolidatorsCommission) + parseFloat(consolCommMob);
     const totalPayOutBal =
         parseFloat(paymentForOutstandingBalance) + parseFloat(payOutsBalMob);
+    const otherCommissionGofw0005 = data.otherCommissionGofw0005;
 
     //2%
     const mwTwoPer = data.mwTwo;
     const drawTwoPer = data.drawTwo;
+
+
+    //LESS WITH HOLDING TAX (SEPCIAL)
+
+    const specialMRA = parseFloat(totalMWBets) + parseFloat(draw) ;
+    const specialWHT =parseFloat(specialMRA *0.015 * 0.2 * 0.02).toFixed(2);
 
     //LESS WITH HOLDING TAX
 
@@ -39,9 +47,12 @@ const computationSoa = (data) => {
 
     const lessWithHoldingTax = parseFloat(totalComm1 * 0.2 * 0.02).toFixed(2);
     const totalNetComm = parseFloat(netOpCommission) + parseFloat(lessWithHoldingTax);
-    const totalNetCommWithTax = parseFloat(netOpCommission) - parseFloat(lessWithHoldingTax) - parseFloat(otherDeductiblesFromCommission);
+    const totalNetCommWithTax = parseFloat(netOpCommission) + parseFloat(otherCommissionIntel01) - parseFloat(paymentForOutstandingBalance) - parseFloat(otherDeductiblesFromCommission) - parseFloat(lessWithHoldingTax) - parseFloat(otherCommissionGofw0005);
+    const specialTotalNetCommWithTax = parseFloat(netOpCommission) + parseFloat(otherCommissionIntel01) - parseFloat(paymentForOutstandingBalance) - parseFloat(otherDeductiblesFromCommission) - parseFloat(specialWHT) - parseFloat(otherCommissionGofw0005);
 
+    //DEDUCTIBLES
 
+    const totalDeductibles = parseFloat(otherDeductiblesFromCommission) + parseFloat(otherCommissionGofw0005);
 
     const computation = {
         totalMWBets,
@@ -66,6 +77,9 @@ const computationSoa = (data) => {
         lessWithHoldingTax : lessWithHoldingTax,
         totalNetComm: totalNetComm,
         totalNetCommWithTax: totalNetCommWithTax,
+        specialWHT: specialWHT,
+        specialTotalNetCommWithTax: specialTotalNetCommWithTax,
+        totalDeductibles: totalDeductibles,
         ...data,
     };
 

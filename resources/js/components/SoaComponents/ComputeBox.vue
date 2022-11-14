@@ -289,27 +289,7 @@
                             </div>
                         </div>
                     </div>
-                    <div
-                        v-if="!computation.arena_details.email_details[0].email.includes('dea.greatpeak@gmail.com')"
-                        class="d-flex align-center justify-end computation-wrapper_field"
-                    >
-                        <span class="custom-label"
-                            >Other Deductibles from Commission:</span
-                        >
-                        <div
-                            class="d-flex align-center computation-container_field"
-                        >
-                            <span class="operation">-</span>
-                            <div
-                                class="custom-span computation-span d-flex align-center"
 
-                            >
-                                <span>{{
-                                    moneyFormat(computation.otherDeductiblesFromCommission)
-                                }}</span>
-                            </div>
-                        </div>
-                    </div>
 
                     <div
                         v-if="!computation.arena_details.email_details[0].email.includes('dea.greatpeak@gmail.com')"
@@ -334,6 +314,28 @@
                         v-if="!computation.arena_details.email_details[0].email.includes('dea.greatpeak@gmail.com')"
                         class="d-flex align-center justify-end computation-wrapper_field"
                     >
+                        <span class="custom-label"
+                            >Other Deductibles from Commission:</span
+                        >
+                        <div
+                            class="d-flex align-center computation-container_field"
+                        >
+                            <span class="operation">-</span>
+                            <div
+                                class="custom-span computation-span d-flex align-center"
+
+                            >
+                                <span>{{
+                                    moneyFormat(computation.totalDeductibles)
+                                }}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                        v-if="!computation.arena_details.email_details[0].email.includes('dea.greatpeak@gmail.com')"
+                        class="d-flex align-center justify-end computation-wrapper_field"
+                    >
                         <span class="font-weight-bold custom-label ctotal-label"
                             >Withholding Tax:</span
                         >
@@ -345,7 +347,13 @@
                                 class="custom-span computation-span d-flex align-center computation-total"
                                 style="background-color: rgb(174,185,203);"
                             >
-                                <span>{{ moneyFormat(computation.lessWithHoldingTax) }}</span>
+                                <span v-if="computation.arena_details.area_code != 'MRA01'">
+                                    {{ moneyFormat(computation.lessWithHoldingTax) }}
+                                </span>
+                                <span v-else>
+                                    {{ moneyFormat(computation.specialWHT) }}
+                                </span>
+
                             </div>
                         </div>
                     </div>
@@ -364,9 +372,13 @@
                             <div
                                 class="custom-span computation-span d-flex align-center computation-total"
                             >
-                                <span class="ctotal-text">{{
-                                    moneyFormat(computation.totalNetCommWithTax, true)
-                                }}</span>
+                                <span class="ctotal-text"
+                                v-if="computation.arena_details.area_code != 'MRA01'">
+                                    {{moneyFormat(computation.totalNetCommWithTax.toFixed(2), true)}}
+                                </span>
+                                <span v-else>
+                                    {{moneyFormat(computation.specialTotalNetCommWithTax.toFixed(2), true)}}
+                                </span>
                             </div>
                         </div>
                     </div>

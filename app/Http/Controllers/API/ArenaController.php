@@ -90,7 +90,7 @@ class ArenaController extends Controller
 
 
 
-        
+
         if($request['email']) {
             Email::updateOrCreate([
                 'area_code' => $arena->area_code,
@@ -119,6 +119,16 @@ class ArenaController extends Controller
         // $activity_controller->arenaLogs('imported',$request['Uploadname'],'arena',1);
         // return  $contactImport;
     }
+
+    public function clearArena(Request $request){
+
+        // dd($request->all());
+        $clearArena = arena::truncate();
+        // $activity_controller = new ActivitylogsController;
+        // $activity_controller->arenaLogs('imported',$request['Uploadname'],'arena',1);
+        // return  $contactImport;
+    }
+
 
     /**
      * Display the specified resource.
@@ -156,7 +166,7 @@ class ArenaController extends Controller
     public function deleteEmail($id){
         $email = Email::findOrFail($id);
         $this->Arenaactivity('deleted',$email->email,'arena',$id);
-        
+
         $email->delete();
 
 
