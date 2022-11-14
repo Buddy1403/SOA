@@ -6,21 +6,11 @@
                         <v-col>
                             <v-row>
                                 <sign-box
-                                    titleKey="Prepared by"
+                                    titleKey="Checked by"
                                     :check.sync="prepared"
                                     assignedSign="prepared"
                                     :noOfSign="3"
                                      @prepared="handleChangedOpenSignatory"
-                                ></sign-box>
-                            </v-row>
-                            <v-divider></v-divider>
-                            <v-row>
-                                <sign-box
-                                    titleKey="Checked by"
-                                    :check.sync="checkSetOne"
-                                    assignedSign="checkSetOne"
-                                    :noOfSign="4"
-                                     @checkSetOne="handleChangedOpenSignatory"
                                 ></sign-box>
                             </v-row>
                             <v-divider></v-divider>
