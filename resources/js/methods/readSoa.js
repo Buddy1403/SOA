@@ -72,7 +72,7 @@ const readSoa = (event, isExcel, withSite) => {
             // Select only specific excel sheet
             const filteredWS = ws.filter(function (value, index, arr) {
                 const accReportComb = "Accounts Report Combined";
-                const summaryRep = "Summary Report";
+                const summaryRep = "REPORT FOR FA";
                 return (
                     camelCase(value) === camelCase(accReportComb) ||
                     camelCase(value) === camelCase(summaryRep)
