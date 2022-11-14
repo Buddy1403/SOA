@@ -124,6 +124,8 @@ class ArenaController extends Controller
 
         // dd($request->all());
         $clearArena = arena::truncate();
+        $clearArena = Email::truncate();
+        $clearArena = Contact::truncate();
         // $activity_controller = new ActivitylogsController;
         // $activity_controller->arenaLogs('imported',$request['Uploadname'],'arena',1);
         // return  $contactImport;
