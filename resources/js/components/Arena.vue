@@ -166,7 +166,7 @@
                                 </template>
 
                                 <template v-slot:[`item.actions`]="{ item }">
-                                    <v-tooltip top color="primary">
+                                    <v-tooltip top color="orange">
                                         <template
                                             v-slot:activator="{ on, attrs }"
                                         >
