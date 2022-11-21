@@ -346,7 +346,7 @@
                                                     </v-row>
 
                                                     <v-row>
-                                                        <span
+                                                        <!-- <span
                                                             v-if="
                                                                 depRep
                                                                     .depositReplenishText
@@ -364,7 +364,7 @@
                                                             replenishments
                                                             during non-banking
                                                             days.</span
-                                                        >
+                                                        > -->
                                                         <BankBox
                                                             :bankAccounts="
                                                                 bankAccounts ||
@@ -785,7 +785,7 @@ export default {
                 this.tab === "converted" &&
                 this.dates.length > 1 &&
                 !this.search){
-                    await this.soaLists(site, this.dates);
+                    await this.searchCentralize(site, this.dates);
             }
             else if (
                 this.tab === "ongoing" &&

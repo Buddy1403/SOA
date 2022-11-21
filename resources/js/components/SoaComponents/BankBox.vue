@@ -1,6 +1,6 @@
 <template>
-    <v-row
-        v-if="!arenaDetails.email_details[0].email.includes('dea.greatpeak@gmail.com')"
+    <v-row v-show="depositReplenishText.totalText != 'Replenish'"
+        v-if="!arenaDetails.email_details[0].email.includes('dea.greatpeak@gmail.com') && !arenaDetails.email_details[0].email.includes('cristina.tabion@alpharedph.net')"
         class="bank-container"
         style="padding: 1px !important; height: auto; margin: 0 !important"
     >

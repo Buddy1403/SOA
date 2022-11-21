@@ -75,15 +75,6 @@
                                   }
                         "
                     />
-                    <span
-                        v-if="item.group === 'Replenish'"
-                        class="text-xs my-2"
-                        style="color: #e64a19"
-                        >Please be advised that replenishment are only available
-                        during banking days. We allow off setting of pending
-                        remittances and replenishments during non-banking
-                        days.</span
-                    >
 
                     <BankBox
                         :bankAccounts="bankAccounts || []"

@@ -144,7 +144,7 @@
                         </div>
                     </div>
                     <div
-                        v-if="!computation.arena_details.email_details[0].email.includes('dea.greatpeak@gmail.com')"
+                        v-if="!computation.arena_details.email_details[0].email.includes('dea.greatpeak@gmail.com') && !computation.arena_details.email_details[0].email.includes('cristina.tabion@alpharedph.net')"
                         class="d-flex align-center justify-end computation-wrapper_field"
                     >
                         <span class="custom-label"
@@ -162,7 +162,7 @@
                         </div>
                     </div>
                     <div
-                        v-if="!computation.arena_details.email_details[0].email.includes('dea.greatpeak@gmail.com')"
+                    v-if="!computation.arena_details.email_details[0].email.includes('dea.greatpeak@gmail.com') && !computation.arena_details.email_details[0].email.includes('cristina.tabion@alpharedph.net')"
                         class="d-flex align-center justify-end computation-wrapper_field"
                     >
                         <span class="custom-label">Draw*{{ commissionPercent * 100 }}% (kiosk):</span
@@ -179,7 +179,7 @@
                         </div>
                     </div>
                     <div
-                        v-if="!computation.arena_details.email_details[0].email.includes('dea.greatpeak@gmail.com')"
+                    v-if="!computation.arena_details.email_details[0].email.includes('dea.greatpeak@gmail.com') && !computation.arena_details.email_details[0].email.includes('cristina.tabion@alpharedph.net')"
                         class="d-flex align-center justify-end computation-wrapper_field"
                     >
                         <span class="custom-label"
@@ -199,7 +199,7 @@
                         </div>
                     </div>
                     <div
-                        v-if="!computation.arena_details.email_details[0].email.includes('dea.greatpeak@gmail.com')"
+                    v-if="!computation.arena_details.email_details[0].email.includes('dea.greatpeak@gmail.com') && !computation.arena_details.email_details[0].email.includes('cristina.tabion@alpharedph.net')"
                         class="d-flex align-center justify-end computation-wrapper_field"
                     >
                         <span class="custom-label"
@@ -251,7 +251,7 @@
                         </div>
                     </div>
                     <div
-                        v-if="!computation.arena_details.email_details[0].email.includes('dea.greatpeak@gmail.com')"
+                    v-if="!computation.arena_details.email_details[0].email.includes('dea.greatpeak@gmail.com') && !computation.arena_details.email_details[0].email.includes('cristina.tabion@alpharedph.net')"
                         class="d-flex align-center justify-end computation-wrapper_field"
                     >
                         <span class="custom-label">Sales Deduction:</span>
@@ -269,7 +269,7 @@
                     </div>
 
                     <div
-                        v-if="!computation.arena_details.email_details[0].email.includes('dea.greatpeak@gmail.com')"
+                    v-if="!computation.arena_details.email_details[0].email.includes('dea.greatpeak@gmail.com') && !computation.arena_details.email_details[0].email.includes('cristina.tabion@alpharedph.net')"
                         class="d-flex align-center justify-end computation-wrapper_field"
                     >
                         <span class="custom-label"
@@ -292,7 +292,7 @@
 
 
                     <div
-                        v-if="!computation.arena_details.email_details[0].email.includes('dea.greatpeak@gmail.com')"
+                    v-if="!computation.arena_details.email_details[0].email.includes('dea.greatpeak@gmail.com') && !computation.arena_details.email_details[0].email.includes('cristina.tabion@alpharedph.net')"
                         class="d-flex align-center justify-end computation-wrapper_field"
                     >
                         <span class="font-weight-bold custom-label ctotal-label"
@@ -311,7 +311,7 @@
                     </div>
 
                     <div
-                        v-if="!computation.arena_details.email_details[0].email.includes('dea.greatpeak@gmail.com')"
+                    v-if="!computation.arena_details.email_details[0].email.includes('dea.greatpeak@gmail.com') && !computation.arena_details.email_details[0].email.includes('cristina.tabion@alpharedph.net')"
                         class="d-flex align-center justify-end computation-wrapper_field"
                     >
                         <span class="custom-label"
@@ -333,7 +333,7 @@
                     </div>
 
                     <div
-                        v-if="!computation.arena_details.email_details[0].email.includes('dea.greatpeak@gmail.com')"
+                    v-if="!computation.arena_details.email_details[0].email.includes('dea.greatpeak@gmail.com') && !computation.arena_details.email_details[0].email.includes('cristina.tabion@alpharedph.net')"
                         class="d-flex align-center justify-end computation-wrapper_field"
                     >
                         <span class="font-weight-bold custom-label ctotal-label"
@@ -359,7 +359,7 @@
                     </div>
 
                     <div
-                        v-if="!computation.arena_details.email_details[0].email.includes('dea.greatpeak@gmail.com')"
+                    v-if="!computation.arena_details.email_details[0].email.includes('dea.greatpeak@gmail.com') && !computation.arena_details.email_details[0].email.includes('cristina.tabion@alpharedph.net')"
                         class="d-flex align-center justify-end computation-wrapper_field"
                     >
                         <span class="font-weight-bold custom-label ctotal-label"
@@ -442,8 +442,9 @@
                 </div>
             </div>
         </v-row>
+
         <v-row class="row-compute">
-            <div class="d-flex mobile-computebox" :style="[!computation.arena_details.email_details[0].email.includes('dea.greatpeak@gmail.com') ? {'margin-top': '-85px'} : {'margin-top': '50px'}]">
+            <div class="d-flex mobile-computebox" :style="[!computation.arena_details.email_details[0].email.includes('dea.greatpeak@gmail.com')  && !computation.arena_details.email_details[0].email.includes('cristina.tabion@alpharedph.net') ? {'margin-top': '-85px'} : {'margin-top': '50px'}]">
                 <div>
                     <div
                         class="d-flex justify-center align-center kiosk-mobile_text"
