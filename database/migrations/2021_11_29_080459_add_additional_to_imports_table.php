@@ -20,6 +20,7 @@ class AddAdditionalToImportsTable extends Migration
             $table->string('netOperatorsCommission')->default(0);
             $table->string('otherCommissionIntel01')->default(0);
             $table->string('otherCommissionGofw0005')->default(0);
+            $table->string('otherCommissionSharedForMayor00025')->default(0);
             $table->string('consolidatorsCommission')->default(0);
             $table->string('safetyFund')->default(0);
             $table->string('paymentForOutstandingBalance')->default(0);

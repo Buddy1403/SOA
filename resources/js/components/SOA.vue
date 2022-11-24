@@ -844,6 +844,7 @@ export default {
             this.numberOfPages = item.numberOfPages;
             if (item.depositReplenish.length === 0) this.showClear = false;
         },
+
         handleClearBtn(value) {
             // $emit clear dates from date-range component
             this.showClear = value;
@@ -861,6 +862,7 @@ export default {
             if (value.length < 1)
                 (this.signsArray = []), (this.printReadyProgress = 100);
         },
+
         getDates(value) {
             // $emit get dates from date-range component
             this.dates = value;
@@ -871,6 +873,7 @@ export default {
             // $emit return to default menu tab (ongoing) from date-range component
             this.tab = item;
         },
+
         handleEmptySelect() {
             // unselect all selected imports
             this.printReadyProgress = 0;
@@ -938,6 +941,7 @@ export default {
 
        async searchCentralize(site){
             const tabItem = this.tab;
+
             const to = moment(this.dates[1], "YYYY-MM-DD")
             .add(1, "days")
             .format("YYYY-MM-DD");
@@ -949,6 +953,7 @@ export default {
             console.log('data',data);
             return data;
         },
+
         noArenaDetails(item) {
             this.arenaData = item.noArenaData;
             this.total = item.total;

@@ -178,6 +178,7 @@ const readSoa = (event, isExcel, withSite) => {
                             payOutsBalMob: 0,
                             otherDeductiblesFromCommission: 0,
                             otherCommissionGofw0005: 0,
+                            otherCommissionSharedForMayor00025: 0,
                             ...data,
                         });
                     });
@@ -292,6 +293,8 @@ const readSoa = (event, isExcel, withSite) => {
                             rest.otherCommissionIntel01;
                         const otherCommissionGofw0005 =
                             rest.otherCommissionGofw0005;
+                        const otherCommissionSharedForMayor00025 =
+                            rest.otherCommissionSharedForMayor00025;
                         const consolidatorsCommission =
                             rest.consolidatorsCommission;
                         const safetyFund = rest.safetyFund;
@@ -356,6 +359,7 @@ const readSoa = (event, isExcel, withSite) => {
                             netOperatorsCommission,
                             otherCommissionIntel01: otherCommissionIntel,
                             otherCommissionGofw0005: otherCommissionGofw0005,
+                            otherCommissionSharedForMayor00025: otherCommissionSharedForMayor00025,
                             consolidatorsCommission,
                             safetyFund,
                             paymentForOutstandingBalance,
