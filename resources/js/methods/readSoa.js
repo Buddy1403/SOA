@@ -176,9 +176,12 @@ const readSoa = (event, isExcel, withSite) => {
                             otherCommIntMob: 0,
                             consolCommMob: 0,
                             payOutsBalMob: 0,
+                            otherCommission: 0,
                             otherDeductiblesFromCommission: 0,
                             otherCommissionGofw0005: 0,
                             otherCommissionSharedForMayor00025: 0,
+                            consolidatorsCommission: 0,
+                            paymentForOutstandingBalance: 0,
                             ...data,
                         });
                     });
@@ -289,6 +292,8 @@ const readSoa = (event, isExcel, withSite) => {
                         const salesDeduction = rest.salesDeductionTablet;
                         const netOperatorsCommission =
                             rest.netOperatorsCommission;
+                        const otherCommission =
+                            rest.otherCommission;
                         const otherCommissionIntel =
                             rest.otherCommissionIntel01;
                         const otherCommissionGofw0005 =
@@ -357,6 +362,7 @@ const readSoa = (event, isExcel, withSite) => {
                             cancelled_unpaid: totalCUnpaid,
                             salesDeductionTablet: salesDeduction,
                             netOperatorsCommission,
+                            otherCommission: otherCommission,
                             otherCommissionIntel01: otherCommissionIntel,
                             otherCommissionGofw0005: otherCommissionGofw0005,
                             otherCommissionSharedForMayor00025: otherCommissionSharedForMayor00025,

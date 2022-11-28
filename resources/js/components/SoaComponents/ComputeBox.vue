@@ -315,7 +315,7 @@
                         class="d-flex align-center justify-end computation-wrapper_field"
                     >
                         <span class="custom-label"
-                            >Other Deductibles from Commission:</span
+                            >Other Deductions from Commission:</span
                         >
                         <div
                             class="d-flex align-center computation-container_field"
@@ -326,7 +326,7 @@
 
                             >
                                 <span>{{
-                                    moneyFormat(computation.totalDeductibles)
+                                    moneyFormat(computation.otherCommission)
                                 }}</span>
                             </div>
                         </div>
@@ -342,7 +342,7 @@
                         <div
                             class="d-flex align-center computation-container_field"
                         >
-                            <span class="operation">=</span>
+                            <span class="operation">-</span>
                             <div
                                 class="custom-span computation-span d-flex align-center computation-total"
                                 style="background-color: rgb(174,185,203);"
