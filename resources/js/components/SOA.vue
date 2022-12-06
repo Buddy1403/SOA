@@ -851,7 +851,7 @@ export default {
         },
 
         async handleClear(){
-            this.tab === 'ongoing' ? await this.soaLists() : await this.importWithStatus()
+            this.tab === 'ongoing' ? await this.searchCentralize() : await this.importWithStatus()
         },
 
         handleSelected(value) {
