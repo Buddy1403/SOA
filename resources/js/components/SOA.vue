@@ -930,7 +930,6 @@ export default {
         },
         handleSearching(item) {
             this.$refs.search.handleSearch(item);
-
         },
         handleSearch(items) {
             this.search = items.search;

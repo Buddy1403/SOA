@@ -212,7 +212,7 @@ class importController extends Controller
             if($request->has('per_page')) {
                 $perPage = $request->input('per_page');
                 if($request->has('site') && $site !== 'all') {
-                    return $soaSearch->where('refNo','like', '_'.$site.'%')->paginate($perPage);
+                    return $soaSearch->where('refNo','like', '_'.$site.'%')->whereNull('status')->paginate($perPage);
                 } else if ($request->has('site')  && $site == 'all') {
                     return $soaSearch->whereNull('status')->paginate($perPage);
                 } else {
