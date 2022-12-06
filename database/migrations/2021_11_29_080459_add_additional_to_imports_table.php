@@ -18,6 +18,7 @@ class AddAdditionalToImportsTable extends Migration
             $table->string('totalOthers')->default(0);
             $table->string('salesDeductionTablet')->default(0);
             $table->string('netOperatorsCommission')->default(0);
+            $table->string('otherCommission')->default(0);
             $table->string('otherCommissionIntel01')->default(0);
             $table->string('otherCommissionGofw0005')->default(0);
             $table->string('otherCommissionSharedForMayor00025')->default(0);
