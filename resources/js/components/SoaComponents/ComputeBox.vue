@@ -374,12 +374,10 @@
                             >
                                 <span class="ctotal-text"
                                 v-if="computation.arena_details.area_code != 'MRA01'">
-
-                                    {{moneyFormat(Math.floor(computation.totalNetCommWithTax * 100) / 100, true)}}
+                                    {{moneyFormat(computation.totalNetCommWithTax.toFixed(2))}}
                                 </span>
                                 <span v-else>
-
-                                    {{moneyFormat(Math.floor(computation.specialTotalNetCommWithTax * 100) / 100, true)}}
+                                    {{moneyFormat(computation.specialTotalNetCommWithTax.toFixed(2))}}
                                 </span>
                             </div>
                         </div>

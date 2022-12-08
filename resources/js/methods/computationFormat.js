@@ -42,7 +42,7 @@ const computationSoa = (data) => {
     //LESS WITH HOLDING TAX (SEPCIAL)
 
     const specialMRA = parseFloat(totalMWBets) + parseFloat(draw) ;
-    const specialWHT =parseFloat(specialMRA *0.02 * 0.2 * 0.02).toFixed(2);
+    const specialWHT =parseFloat(specialMRA *0.02 * 0.2 * 0.02);
 
     //LESS WITH HOLDING TAX
 
