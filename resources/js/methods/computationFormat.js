@@ -26,7 +26,7 @@ const computationSoa = (data) => {
         parseFloat(consolidatorsCommission) + parseFloat(consolCommMob);
     const totalPayOutBal =
         parseFloat(paymentForOutstandingBalance) + parseFloat(payOutsBalMob);
-    const otherCommission = parseFloat(data.otherCommission).toFixed(2);
+    const otherCommission = data.otherCommission;
 
 
     //2%
@@ -37,7 +37,7 @@ const computationSoa = (data) => {
     //LESS WITH HOLDING TAX (SEPCIAL)
 
     const specialMRA = parseFloat(totalMWBets) + parseFloat(draw) ;
-    const specialWHT =parseFloat(specialMRA *0.02 * 0.2 * 0.02).toFixed(2);
+    const specialWHT =parseFloat(specialMRA *0.02 * 0.2 * 0.02);
 
     //LESS WITH HOLDING TAX
 
@@ -47,6 +47,8 @@ const computationSoa = (data) => {
     const totalNetComm = parseFloat(netOpCommission).toFixed(2) + parseFloat(lessWithHoldingTax).toFixed(2);
     const totalNetCommWithTax = parseFloat(netOpCommission) - parseFloat(otherCommission) - parseFloat(lessWithHoldingTax);
     const specialTotalNetCommWithTax = parseFloat(netOpCommission) - parseFloat(otherCommission) - parseFloat(specialWHT);
+
+    console.log(parseFloat(netOpCommission) , parseFloat(otherCommission) , parseFloat(specialWHT));
 
     const computation = {
         totalMWBets,

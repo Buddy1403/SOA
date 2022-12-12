@@ -351,7 +351,6 @@ const readSoa = (event, isExcel, withSite) => {
                             salesDeductionTablet: salesDeduction,
                             netOperatorsCommission,
                             otherCommission: otherCommission,
-                            
                             consolidatorsCommission,
                             safetyFund,
                             paymentForOutstandingBalance,
