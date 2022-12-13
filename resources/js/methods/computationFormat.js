@@ -1,3 +1,5 @@
+import { defaultsDeep } from "lodash";
+
 const computationSoa = (data) => {
 
     const totalMWBets = data.total_meron_wala;
@@ -31,7 +33,7 @@ const computationSoa = (data) => {
         parseFloat(paymentForOutstandingBalance) + parseFloat(payOutsBalMob);
     const otherCommissionGofw0005 = data.otherCommissionGofw0005;
     const otherCommissionSharedForMayor00025 = data.otherCommissionSharedForMayor00025;
-    const otherCommission = parseFloat(data.otherCommission).toFixed(2);
+    const otherCommission = data.otherCommission;
 
 
     //2%
@@ -47,11 +49,13 @@ const computationSoa = (data) => {
     //LESS WITH HOLDING TAX
 
     const totalComm1 = parseFloat(mwTwoPer) + parseFloat(drawTwoPer);
+    const lessWithHoldingTax = parseFloat(totalComm1 * 0.2 * 0.02);
 
-    const lessWithHoldingTax = parseFloat(totalComm1 * 0.2 * 0.02).toFixed(2);
-    const totalNetComm = parseFloat(netOpCommission).toFixed(2) + parseFloat(lessWithHoldingTax).toFixed(2);
+    // -------------------------------------
+    const totalNetComm = parseFloat(netOpCommission) + parseFloat(lessWithHoldingTax);
     const totalNetCommWithTax = parseFloat(netOpCommission) - parseFloat(otherCommission) - parseFloat(lessWithHoldingTax);
     const specialTotalNetCommWithTax = parseFloat(netOpCommission) - parseFloat(otherCommission) - parseFloat(specialWHT);
+    // console.log(parseFloat(netOpCommission) , parseFloat(otherCommission) , parseFloat(specialWHT));
     //DEDUCTIBLES
 
     const totalDeductibles = parseFloat(otherDeductiblesFromCommission) + parseFloat(otherCommissionGofw0005);

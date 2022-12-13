@@ -348,10 +348,10 @@
                                 style="background-color: rgb(174,185,203);"
                             >
                                 <span v-if="computation.arena_details.area_code != 'MRA01'">
-                                    {{ moneyFormat(computation.lessWithHoldingTax) }}
+                                    {{ moneyFormat(computation.lessWithHoldingTax.toFixed(2)) }}
                                 </span>
                                 <span v-else>
-                                    {{ moneyFormat(computation.specialWHT) }}
+                                    {{ moneyFormat(computation.specialWHT.toFixed(2)) }}
                                 </span>
 
                             </div>
@@ -375,9 +375,11 @@
                                 <span class="ctotal-text"
                                 v-if="computation.arena_details.area_code != 'MRA01'">
                                     {{moneyFormat(computation.totalNetCommWithTax.toFixed(2))}}
+                                    <!-- {{moneyFormat(Math.floor(computation.totalNetCommWithTax * 100) / 100)}} -->
                                 </span>
                                 <span v-else>
                                     {{moneyFormat(computation.specialTotalNetCommWithTax.toFixed(2))}}
+                                    <!-- {{moneyFormat(Math.floor(computation.specialTotalNetCommWithTax * 100) / 100)}} -->
                                 </span>
                             </div>
                         </div>
