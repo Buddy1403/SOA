@@ -18,15 +18,12 @@ const computationSoa = (data) => {
     const netOpCommission = data.netOperatorsCommission;
     const consolidatorsCommission = data.consolidatorsCommission;
     const paymentForOutstandingBalance = data.paymentForOutstandingBalance;
-    const otherDeductiblesFromCommission = data.otherDeductiblesFromCommission;
     const safetyFund = data.safetyFund;
     const safetyFundMob = data.safetyFundMob;
     const otherCommIntMob = data.otherCommIntMob;
     const consolCommMob = data.consolCommMob;
     const payOutsBalMob = data.payOutsBalMob;
     const totalSafetyFund = parseFloat(safetyFund) + parseFloat(safetyFundMob);
-    const totalOtherCommIntel =
-        parseFloat(otherCommissionIntel01) + parseFloat(otherCommIntMob);
     const totalConsolComm =
         parseFloat(consolidatorsCommission) + parseFloat(consolCommMob);
     const totalPayOutBal =
@@ -55,10 +52,9 @@ const computationSoa = (data) => {
     const totalNetComm = parseFloat(netOpCommission) + parseFloat(lessWithHoldingTax);
     const totalNetCommWithTax = parseFloat(netOpCommission) - parseFloat(otherCommission) - parseFloat(lessWithHoldingTax);
     const specialTotalNetCommWithTax = parseFloat(netOpCommission) - parseFloat(otherCommission) - parseFloat(specialWHT);
-    // console.log(parseFloat(netOpCommission) , parseFloat(otherCommission) , parseFloat(specialWHT));
     //DEDUCTIBLES
 
-    const totalDeductibles = parseFloat(otherDeductiblesFromCommission) + parseFloat(otherCommissionGofw0005);
+    console.log(parseFloat(netOpCommission) , parseFloat(otherCommission) , parseFloat(specialWHT));
 
     const computation = {
         totalMWBets,
@@ -73,19 +69,16 @@ const computationSoa = (data) => {
         depositReplenish,
         drawMobile,
         totalMWMobile,
-        otherCommissionIntel01: totalOtherCommIntel,
         safetyFund: totalSafetyFund,
         totalSafetyFund : totalSafetyFund,
         consolidatorsCommission: totalConsolComm,
         totalConsolComm : totalConsolComm,
         paymentForOutstandingBalance: totalPayOutBal,
-        otherDeductiblesFromCommission : otherDeductiblesFromCommission,
         lessWithHoldingTax : lessWithHoldingTax,
         totalNetComm: totalNetComm,
         totalNetCommWithTax: totalNetCommWithTax,
         specialWHT: specialWHT,
         specialTotalNetCommWithTax: specialTotalNetCommWithTax,
-        totalDeductibles: totalDeductibles,
         otherCommission: otherCommission,
         ...data,
     };

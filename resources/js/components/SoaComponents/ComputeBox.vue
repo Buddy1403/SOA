@@ -378,8 +378,9 @@
                                     <!-- {{moneyFormat(Math.floor(computation.totalNetCommWithTax * 100) / 100)}} -->
                                 </span>
                                 <span v-else>
+
+                                    <!-- {{moneyFormat(Math.floor(computation.specialTotalNetCommWithTax * 100) / 100, true)}} -->
                                     {{moneyFormat(computation.specialTotalNetCommWithTax.toFixed(2))}}
-                                    <!-- {{moneyFormat(Math.floor(computation.specialTotalNetCommWithTax * 100) / 100)}} -->
                                 </span>
                             </div>
                         </div>
