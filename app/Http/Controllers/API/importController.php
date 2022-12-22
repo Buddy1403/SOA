@@ -149,8 +149,22 @@ class importController extends Controller
                 'arenaDetails.UserTeam.userDetails.positionDetails'
         ])->orderBy('date_of_soa', 'DESC')->orderBy('areaCode', 'ASC');
 
-        // $emailSearch = Email::orderBy('date_of_soa', 'DESC')->orderBy('areaCode', 'ASC');
+        $jcapFilter = DB::table('imports')
+                    ->join('emails','imports.areaCode', '=', 'emails.area_code')
+                    ->select('imports.*')
+                    ->orderBy('imports.areaCode', 'ASC');
 
+        $jcapFilter = import::with(['BankDetails',
+                'arenaDetails.BankDetails',
+                'arenaDetails.EmailDetails',
+                'arenaDetails.ContactDetails',
+                'arenaDetails.UserTeam.userDetails.positionDetails'
+        ])
+        ->join('emails','imports.areaCode', '=', 'emails.area_code')
+        ->where('email', 'LIKE', '%dea.greatpeak@gmail.com%')
+        ->orderBy('date_of_soa', 'DESC')->orderBy('areaCode', 'ASC');
+
+        // $emailSearch = Email::orderBy('date_of_soa', 'DESC')->orderBy('areaCode', 'ASC');
 
         if (($request->query('search') != null && $request->query('search') != "null") && ($from === "undefined" && $to === "Invalid date")){
             if($request->query('search') === "jcap" || $request->query('search') === "JCAP"){
@@ -158,10 +172,10 @@ class importController extends Controller
                     // dd('hehe');
                     $perPage = $request->input('per_page');
                     if($request->has('site') && $site !== 'all') {
-                        return $soaSearch->where('refNo','like', '_'.$site.'%')->with(['arenaDetails.EmailDetails','=', 'dea.greatpeak@gmail.com'])
+                        return $jcapFilter->where('refNo','like', '_'.$site.'%')
                                         ->paginate($perPage);
                     }elseif($request->has('site')  && $site == 'all'){
-                        return $soaSearch->Where('email','=', 'dea.greatpeak@gmail.com')->paginate($perPage);
+                        return $jcapFilter->paginate($perPage);
                     }else{
                         return $soaSearch->paginate($perPage);
                     }
