@@ -82,7 +82,7 @@ const computationSoa = (data) => {
         otherCommission: otherCommission,
         ...data,
     };
-
+    //test
     return computation;
 };
 

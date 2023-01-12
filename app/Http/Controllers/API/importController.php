@@ -162,6 +162,7 @@ class importController extends Controller
         ])
         ->join('emails','imports.areaCode', '=', 'emails.area_code')
         ->where('email', 'LIKE', '%dea.greatpeak@gmail.com%')
+        ->where('import.status', '=', 'NULL')
         ->orderBy('date_of_soa', 'DESC')->orderBy('areaCode', 'ASC');
 
         // $emailSearch = Email::orderBy('date_of_soa', 'DESC')->orderBy('areaCode', 'ASC');
