@@ -7,7 +7,7 @@ nodejs Recommended version
 
 
 ## cloning 
- git clone  https://github.com/techsupport29/soa_report.git
+ git clone https://github.com/Buddy1403/SOA.git
 ## Set Up 
 npm install <br>
 composer install <br>
