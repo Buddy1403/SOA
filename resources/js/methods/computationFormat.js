@@ -1,16 +1,19 @@
+import { defaultsDeep } from "lodash";
+
 const computationSoa = (data) => {
 
     const totalMWBets = data.total_meron_wala;
     const drawCancelled = data.draw_cancelled;
+    const draw = data.draw;
     const totalPayoutPaid = data.total_payout_paid;
     const cdPaid = data.draw_cancelled_paid;
     const drawPaid = data.draw_paid;
     const cUnpaid = data.cancelled_unpaid;
     const salesDeduction = data.salesDeductionTablet;
-    const otherCommissionIntel05 = data.otherCommissionIntel05;
+    const otherCommissionIntel01 = data.otherCommissionIntel01;
     const totalMWMobile = data.total_win_mobile;
     const drawMobile = data.draw_mobile;
-    const depositReplenish = data.for_total;
+    const depositReplenish = parseFloat(data.for_total).toFixed(2);
     const totalCommission = data.totalCommission;
     const netOpCommission = data.netOperatorsCommission;
     const consolidatorsCommission = data.consolidatorsCommission;
@@ -21,12 +24,38 @@ const computationSoa = (data) => {
     const consolCommMob = data.consolCommMob;
     const payOutsBalMob = data.payOutsBalMob;
     const totalSafetyFund = parseFloat(safetyFund) + parseFloat(safetyFundMob);
-    const totalOtherCommIntel =
-        parseFloat(otherCommissionIntel05) + parseFloat(otherCommIntMob);
     const totalConsolComm =
         parseFloat(consolidatorsCommission) + parseFloat(consolCommMob);
     const totalPayOutBal =
         parseFloat(paymentForOutstandingBalance) + parseFloat(payOutsBalMob);
+    const otherCommissionGofw0005 = data.otherCommissionGofw0005;
+    const otherCommissionSharedForMayor00025 = data.otherCommissionSharedForMayor00025;
+    const otherCommission = data.otherCommission;
+
+
+    //2%
+    const mwTwoPer = data.mwTwo;
+    const drawTwoPer = data.drawTwo;
+
+
+    //LESS WITH HOLDING TAX (SEPCIAL)
+
+    const specialMRA = parseFloat(totalMWBets) + parseFloat(draw) ;
+    const specialWHT =parseFloat(specialMRA *0.02 * 0.2 * 0.02);
+
+    //LESS WITH HOLDING TAX
+
+    const totalComm1 = parseFloat(mwTwoPer) + parseFloat(drawTwoPer);
+    const lessWithHoldingTax = parseFloat(totalComm1 * 0.2 * 0.02);
+
+    // -------------------------------------
+    const totalNetComm = parseFloat(netOpCommission) + parseFloat(lessWithHoldingTax);
+    const totalNetCommWithTax = parseFloat(netOpCommission) - parseFloat(otherCommission) - parseFloat(lessWithHoldingTax);
+    const specialTotalNetCommWithTax = parseFloat(netOpCommission) - parseFloat(otherCommission) - parseFloat(specialWHT);
+    //DEDUCTIBLES
+
+    console.log(parseFloat(netOpCommission) , parseFloat(otherCommission) , parseFloat(specialWHT));
+
     const computation = {
         totalMWBets,
         drawCancelled,
@@ -40,15 +69,20 @@ const computationSoa = (data) => {
         depositReplenish,
         drawMobile,
         totalMWMobile,
-        otherCommissionIntel05: totalOtherCommIntel,
         safetyFund: totalSafetyFund,
         totalSafetyFund : totalSafetyFund,
         consolidatorsCommission: totalConsolComm,
         totalConsolComm : totalConsolComm,
         paymentForOutstandingBalance: totalPayOutBal,
+        lessWithHoldingTax : lessWithHoldingTax,
+        totalNetComm: totalNetComm,
+        totalNetCommWithTax: totalNetCommWithTax,
+        specialWHT: specialWHT,
+        specialTotalNetCommWithTax: specialTotalNetCommWithTax,
+        otherCommission: otherCommission,
         ...data,
     };
-
+    //test
     return computation;
 };
 

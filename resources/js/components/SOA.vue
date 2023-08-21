@@ -346,7 +346,7 @@
                                                     </v-row>
 
                                                     <v-row>
-                                                        <span
+                                                        <!-- <span
                                                             v-if="
                                                                 depRep
                                                                     .depositReplenishText
@@ -364,7 +364,7 @@
                                                             replenishments
                                                             during non-banking
                                                             days.</span
-                                                        >
+                                                        > -->
                                                         <BankBox
                                                             :bankAccounts="
                                                                 bankAccounts ||
@@ -380,18 +380,7 @@
                                                                 depRep.depositReplenishText
                                                             "
                                                         />
-                                                         <span
-                                                            v-if="
-                                                                depRep
-                                                                    .depositReplenishText
-                                                                    .dateText ===
-                                                                'FR'
-                                                            "
-                                                            class="fr-notif"
-                                                            ><i>*Please note that the reflected total commision is already
-                                                            net of withholding tax.
-                                                            Please see attached acknowledgement receipt for the details.</i></span
-                                                        >
+
                                                     </v-row>
 
                                                     <SignatoryBox
@@ -645,7 +634,7 @@ export default {
             computationSoa,
             signsArray: [],
             progressText: null,
-            printReadyProgress: 0,
+            printReadyProgress: 100,
             total: 0,
             page: 0,
             numberOfPages: 0,
@@ -796,7 +785,7 @@ export default {
                 this.tab === "converted" &&
                 this.dates.length > 1 &&
                 !this.search){
-                    await this.soaLists(site, this.dates);
+                    await this.searchCentralize(site, this.dates);
             }
             else if (
                 this.tab === "ongoing" &&
@@ -855,22 +844,25 @@ export default {
             this.numberOfPages = item.numberOfPages;
             if (item.depositReplenish.length === 0) this.showClear = false;
         },
+
         handleClearBtn(value) {
             // $emit clear dates from date-range component
             this.showClear = value;
         },
 
         async handleClear(){
-            this.tab === 'ongoing' ? await this.soaLists() : await this.importWithStatus()
+            this.tab === 'ongoing' ? await this.searchCentralize() : await this.importWithStatus()
         },
 
         handleSelected(value) {
             // $emit Selected imports from table-soa component
             this.selected = value;
+
             console.log("SELECTED", value);
             if (value.length < 1)
-                (this.signsArray = []), (this.printReadyProgress = 0);
+                (this.signsArray = []), (this.printReadyProgress = 100);
         },
+
         getDates(value) {
             // $emit get dates from date-range component
             this.dates = value;
@@ -881,6 +873,7 @@ export default {
             // $emit return to default menu tab (ongoing) from date-range component
             this.tab = item;
         },
+
         handleEmptySelect() {
             // unselect all selected imports
             this.printReadyProgress = 0;
@@ -937,7 +930,6 @@ export default {
         },
         handleSearching(item) {
             this.$refs.search.handleSearch(item);
-
         },
         handleSearch(items) {
             this.search = items.search;
@@ -948,17 +940,19 @@ export default {
 
        async searchCentralize(site){
             const tabItem = this.tab;
+
             const to = moment(this.dates[1], "YYYY-MM-DD")
             .add(1, "days")
             .format("YYYY-MM-DD");
 
             const status =  tabItem === 'ongoing' || (!tabItem && this.tab ==='ongoing') ? null : 'done'
-            const {data} = await axios.get(`api/searchSoa?&search=${this.searchArenaParams}&site=${site}&status=${status}&dateFrom=${this.dates[0]}&dateTo=${to}&page=${this.page}&per_page=${parseInt(localStorage.getItem('itemsPerPage'))}`);
+            const {data} = await axios.get(`api/searchSoa?&search=${this.searchArenaParams}&site=${site}&status=${status}&dateFrom=${this.dates[0]}&dateTo=${to}&page=${this.pageNumber}&per_page=${parseInt(localStorage.getItem('itemsPerPage'))}`);
 
             this.arenaData = data.data;
             console.log('data',data);
             return data;
         },
+
         noArenaDetails(item) {
             this.arenaData = item.noArenaData;
             this.total = item.total;

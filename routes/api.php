@@ -91,6 +91,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     //custom Arena api
     //post
     Route::post('importArena', [App\Http\Controllers\API\ArenaController::class, 'importArena']);
+    Route::post('clearArena', [App\Http\Controllers\API\ArenaController::class, 'clearArena']);
     //get
     Route::get('getEmails/{areaCode}', [App\Http\Controllers\API\ArenaController::class, 'getEmails']);
     Route::get('getContacts/{areaCode}', [App\Http\Controllers\API\ArenaController::class, 'getContacts']);
@@ -154,7 +155,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     Route::post('fetchSoaByOperatorGroup', [App\Http\Controllers\API\OperatorGroupController::class, 'fetchSoaByOperatorGroup']);
     Route::get('groupSoaSummaryReport', [App\Http\Controllers\API\OperatorGroupController::class, 'groupSoaSummaryReport']);
     Route::post('addArenaSearch', [App\Http\Controllers\API\OperatorGroupController::class, 'AddArenaSearch']);
-    
+
 
 
 

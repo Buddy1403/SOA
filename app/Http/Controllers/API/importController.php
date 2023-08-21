@@ -113,7 +113,7 @@ class importController extends Controller
     if($request->has('per_page')) {
 
         $perPage = $request->input('per_page');
-        
+
         if($request->has('site') && $site !== 'all') {
             if($request->has('dateFrom') && $request->has('dateTo')) {
                 return $soa->where('refNo','like', '_'.$site.'%')->whereBetween('date_of_soa',[$from, $to])->paginate($perPage);
@@ -149,28 +149,62 @@ class importController extends Controller
                 'arenaDetails.UserTeam.userDetails.positionDetails'
         ])->orderBy('date_of_soa', 'DESC')->orderBy('areaCode', 'ASC');
 
-        
+        $jcapFilter = DB::table('imports')
+                    ->join('emails','imports.areaCode', '=', 'emails.area_code')
+                    ->select('imports.*')
+                    ->orderBy('imports.areaCode', 'ASC');
+
+        $jcapFilter = import::with(['BankDetails',
+                'arenaDetails.BankDetails',
+                'arenaDetails.EmailDetails',
+                'arenaDetails.ContactDetails',
+                'arenaDetails.UserTeam.userDetails.positionDetails'
+        ])
+        ->join('emails','imports.areaCode', '=', 'emails.area_code')
+        ->where('email', 'LIKE', '%dea.greatpeak@gmail.com%')
+        ->where('import.status', '=', 'NULL')
+        ->orderBy('date_of_soa', 'DESC')->orderBy('areaCode', 'ASC');
+
+        // $emailSearch = Email::orderBy('date_of_soa', 'DESC')->orderBy('areaCode', 'ASC');
+
         if (($request->query('search') != null && $request->query('search') != "null") && ($from === "undefined" && $to === "Invalid date")){
-            if($request->has('per_page')) {
-                
-                $perPage = $request->input('per_page');
-                if($request->has('site') && $site !== 'all') { 
-                    return $soaSearch->where('refNo','like', '_'.$site.'%')->Where('arena_name','like', '%'.$request->query('search').'%')
-                                    ->paginate($perPage);
-                }elseif($request->has('site')  && $site == 'all'){
-                    return $soaSearch->Where('arena_name','like', '%'.$request->query('search').'%')
-                                    ->orWhere('areaCode','like', '%'.$request->query('search').'%')->paginate($perPage);
-                }else{
-                    return $soaSearch->paginate($perPage);
+            if($request->query('search') === "jcap" || $request->query('search') === "JCAP"){
+                if($request->has('per_page')) {
+                    // dd('hehe');
+                    $perPage = $request->input('per_page');
+                    if($request->has('site') && $site !== 'all') {
+                        return $jcapFilter->where('refNo','like', '_'.$site.'%')
+                                        ->paginate($perPage);
+                    }elseif($request->has('site')  && $site == 'all'){
+                        return $jcapFilter->paginate($perPage);
+                    }else{
+                        return $soaSearch->paginate($perPage);
+                    }
+                }else {
+                    return $soaSearch->get();
                 }
-            }else {
-                return $soaSearch->get();  
+            }else{
+                if($request->has('per_page')) {
+                    // dd('haha');
+                    $perPage = $request->input('per_page');
+                    if($request->has('site') && $site !== 'all') {
+                        return $soaSearch->where('refNo','like', '_'.$site.'%')->Where('arena_name','like', '%'.$request->query('search').'%')
+                                        ->paginate($perPage);
+                    }elseif($request->has('site')  && $site == 'all'){
+                        return $soaSearch->Where('arena_name','like', '%'.$request->query('search').'%')
+                                        ->orWhere('areaCode','like', '%'.$request->query('search').'%')->paginate($perPage);
+                    }else{
+                        return $soaSearch->paginate($perPage);
+                    }
+                }else {
+                    return $soaSearch->get();
+                }
             }
         }
         elseif((is_null($request->query('search')) == true || $request->query('search') == "null") && ($from !== "undefined" && $to !== "Invalid date")){
             if($request->has('per_page')) {
                 $perPage = $request->input('per_page');
-                if($request->has('site') && $site !== 'all') { 
+                if($request->has('site') && $site !== 'all') {
                     if($request->has('dateFrom') && $request->has('dateTo')){
                         return $soaSearch->where('refNo','like', '_'.$site.'%')->whereBetween('date_of_soa',[$from, $to])->paginate($perPage);
                     }else{
@@ -199,8 +233,7 @@ class importController extends Controller
             }else {
                 return $soaSearch->get();
             }
-        }
-        else{
+        }else{
 
             // if($request->has('per_page')) {
             //     $perPage = $request->input('per_page');
@@ -212,9 +245,9 @@ class importController extends Controller
             if($request->has('per_page')) {
                 $perPage = $request->input('per_page');
                 if($request->has('site') && $site !== 'all') {
-                    return $soaSearch->where('refNo','like', '_'.$site.'%')->paginate($perPage);
+                    return $soaSearch->where('refNo','like', '_'.$site.'%')->whereNull('status')->paginate($perPage);
                 } else if ($request->has('site')  && $site == 'all') {
-                    return $soaSearch->paginate($perPage);
+                    return $soaSearch->whereNull('status')->paginate($perPage);
                 } else {
                     return $soaSearch->get();
                 }
@@ -223,7 +256,7 @@ class importController extends Controller
             }
         }
 
-        
+
     }
 
 
@@ -401,7 +434,7 @@ class importController extends Controller
         $group = $request->query('group');
 
         $soaSummaryReport = import::with(['BankDetails','arenaDetails.BankDetails'])->where('group', $group);
-       
+
         if($request->has('per_page')) {
             return $soaSummaryReport->select('date_of_soa')->distinct()->orderBy('date_of_soa', 'DESC')->paginate($request->input('per_page'));
         } else {

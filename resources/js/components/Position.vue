@@ -6,8 +6,8 @@
             :search="search"
             sort-by="calories"
             class="elevation-1 ma-4 custom-tbl"
-           
-        >   
+
+        >
             <template  style="font-size:16px;"  v-for="header in positionHeaders" v-slot:[`header.${header.value}`]="{ header }">
                 <v-icon medium color="#8DA90B">{{ header.icon }}</v-icon>
                 <span style="color:#8DA90B"> {{ header.text }} </span>
@@ -17,7 +17,7 @@
                     flat
                 >
                     <v-toolbar-title class="font-weight-bold custom-color">POSITIONS</v-toolbar-title>
-                        
+
                     <v-spacer></v-spacer>
                         <v-btn
                             color="#8DA90B"
@@ -48,7 +48,7 @@
                                 </template>
                             <span>Edit User Info</span>
                             </v-tooltip>
-                            
+
                             <v-tooltip bottom>
                                 <template v-slot:activator="{ on, attrs }">
                                    <v-btn
@@ -112,29 +112,29 @@
         name: 'position',
         data() {
             return {
-    
+
                 positionHeaders : [
-                  
+
                     { text: 'Position', value: 'position', icon: 'mdi-account-switch' },
                     { text: '', value: 'PositionAction', sortable: false},
                 ],
                 editmode: false,
-            
+
                 length: '',
                 search: '',
-               
+
                 position:[],
                 positionNew:'',
-                
+
                 positionform: new Form({
                     id:'',
                     position: '',
                 }),
-               
+
             }
         },
         methods: {
-        
+
             addnewPostion(){
                 $('#addPostion').modal('show');
                  this.positionform.reset();
@@ -153,7 +153,7 @@
             },
             updatePosition(){
                 this.positionform.put('api/updateposition/'+this.positionform.id).then((data)=> {
-             
+
                       Fire.$emit('AfterCreate');
                       Toast.fire({
                         icon: 'success',
@@ -171,7 +171,7 @@
             loadPosition(){
                 axios.get('api/getposition').then((data)=>{
                     this.position = data.data;
-                    
+
                 });
             },
             deletePosition(id){
@@ -195,12 +195,10 @@
                                 });
                          }
                     })
-               
+
             },
-         
-          
-       
         },
+
         created() {
             this.loadPosition();
            Fire.$on('AfterCreate',() => {
@@ -238,6 +236,6 @@
         border-radius: 20px;
         box-shadow: none;
     }
-    
+
 </style>
 

@@ -19,6 +19,7 @@
                             <span>{{ moneyFormat(computation.totalMWBets) }}</span>
                         </div>
                     </div>
+
                     <div
                         class="d-flex align-center justify-end computation-wrapper_field"
                     >
@@ -143,6 +144,7 @@
                         </div>
                     </div>
                     <div
+                        v-if="!computation.arena_details.email_details[0].email.includes('dea.greatpeak@gmail.com') && !computation.arena_details.email_details[0].email.includes('cristina.tabion@alpharedph.net')"
                         class="d-flex align-center justify-end computation-wrapper_field"
                     >
                         <span class="custom-label"
@@ -160,6 +162,7 @@
                         </div>
                     </div>
                     <div
+                    v-if="!computation.arena_details.email_details[0].email.includes('dea.greatpeak@gmail.com') && !computation.arena_details.email_details[0].email.includes('cristina.tabion@alpharedph.net')"
                         class="d-flex align-center justify-end computation-wrapper_field"
                     >
                         <span class="custom-label">Draw*{{ commissionPercent * 100 }}% (kiosk):</span
@@ -176,6 +179,7 @@
                         </div>
                     </div>
                     <div
+                    v-if="!computation.arena_details.email_details[0].email.includes('dea.greatpeak@gmail.com') && !computation.arena_details.email_details[0].email.includes('cristina.tabion@alpharedph.net')"
                         class="d-flex align-center justify-end computation-wrapper_field"
                     >
                         <span class="custom-label"
@@ -195,6 +199,7 @@
                         </div>
                     </div>
                     <div
+                    v-if="!computation.arena_details.email_details[0].email.includes('dea.greatpeak@gmail.com') && !computation.arena_details.email_details[0].email.includes('cristina.tabion@alpharedph.net')"
                         class="d-flex align-center justify-end computation-wrapper_field"
                     >
                         <span class="custom-label"
@@ -246,6 +251,7 @@
                         </div>
                     </div>
                     <div
+                    v-if="!computation.arena_details.email_details[0].email.includes('dea.greatpeak@gmail.com') && !computation.arena_details.email_details[0].email.includes('cristina.tabion@alpharedph.net')"
                         class="d-flex align-center justify-end computation-wrapper_field"
                     >
                         <span class="custom-label">Sales Deduction:</span>
@@ -261,78 +267,9 @@
                             </div>
                         </div>
                     </div>
-                    <div
-                        class="d-flex align-center justify-end computation-wrapper_field"
-                    >
-                        <span class="font-weight-bold custom-label ctotal-label"
-                            >Net Operator's Commission:</span
-                        >
-                        <div
-                            class="d-flex align-center computation-container_field"
-                        >
-                            <span class="operation">=</span>
-                            <div
-                                class="custom-span computation-span d-flex align-center computation-total"
-                            >
-                                <span>{{ moneyFormat(computation.netOpCommission) }}</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div
-                        class="d-flex align-center justify-end computation-wrapper_field"
-                    >
-                        <span class="custom-label">Other Commission - M:</span>
-                        <div
-                            class="d-flex align-center computation-container_field"
-                        >
-                            <span class="operation">+</span>
-                            <div
-                                class="custom-span computation-span d-flex align-center"
 
-                            >
-                                <span>{{
-                                    moneyFormat(computation.otherCommissionIntel05)
-                                }}</span>
-                            </div>
-                        </div>
-                    </div>
                     <div
-                        class="d-flex align-center justify-end computation-wrapper_field"
-                    >
-                        <span class="custom-label"
-                            >Consolidator's Commission:</span
-                        >
-                        <div
-                            class="d-flex align-center computation-container_field"
-                        >
-                            <span class="operation">-</span>
-                            <div
-                                class="custom-span computation-span d-flex align-center"
-
-                            >
-                                <span>{{
-                                    moneyFormat(computation.totalConsolComm)
-                                }}</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div
-                        class="d-flex align-center justify-end computation-wrapper_field"
-                    >
-                        <span class="custom-label">Safety Fund:</span>
-                        <div
-                            class="d-flex align-center computation-container_field"
-                        >
-                            <span class="operation">-</span>
-                            <div
-                                class="custom-span computation-span d-flex align-center"
-
-                            >
-                                <span>{{ moneyFormat(computation.totalSafetyFund) }}</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div
+                    v-if="!computation.arena_details.email_details[0].email.includes('dea.greatpeak@gmail.com') && !computation.arena_details.email_details[0].email.includes('cristina.tabion@alpharedph.net')"
                         class="d-flex align-center justify-end computation-wrapper_field"
                     >
                         <span class="custom-label"
@@ -352,11 +289,81 @@
                             </div>
                         </div>
                     </div>
+
+
                     <div
+                    v-if="!computation.arena_details.email_details[0].email.includes('dea.greatpeak@gmail.com') && !computation.arena_details.email_details[0].email.includes('cristina.tabion@alpharedph.net')"
                         class="d-flex align-center justify-end computation-wrapper_field"
                     >
                         <span class="font-weight-bold custom-label ctotal-label"
-                            >Total Commission.<font color="red">*</font></span
+                            >Net Operator's Commission:</span
+                        >
+                        <div
+                            class="d-flex align-center computation-container_field"
+                        >
+                            <span class="operation">=</span>
+                            <div
+                                class="custom-span computation-span d-flex align-center computation-total"
+                            >
+                                <span>{{ moneyFormat(computation.netOpCommission) }}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                    v-if="!computation.arena_details.email_details[0].email.includes('dea.greatpeak@gmail.com') && !computation.arena_details.email_details[0].email.includes('cristina.tabion@alpharedph.net')"
+                        class="d-flex align-center justify-end computation-wrapper_field"
+                    >
+                        <span class="custom-label"
+                            >Other Deductions from Commission:</span
+                        >
+                        <div
+                            class="d-flex align-center computation-container_field"
+                        >
+                            <span class="operation">-</span>
+                            <div
+                                class="custom-span computation-span d-flex align-center"
+
+                            >
+                                <span>{{
+                                    moneyFormat(computation.otherCommission)
+                                }}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                    v-if="!computation.arena_details.email_details[0].email.includes('dea.greatpeak@gmail.com') && !computation.arena_details.email_details[0].email.includes('cristina.tabion@alpharedph.net')"
+                        class="d-flex align-center justify-end computation-wrapper_field"
+                    >
+                        <span class="font-weight-bold custom-label ctotal-label"
+                            >Withholding Tax:</span
+                        >
+                        <div
+                            class="d-flex align-center computation-container_field"
+                        >
+                            <span class="operation">-</span>
+                            <div
+                                class="custom-span computation-span d-flex align-center computation-total"
+                                style="background-color: rgb(174,185,203);"
+                            >
+                                <span v-if="computation.arena_details.area_code != 'MRA01'">
+                                    {{ moneyFormat(computation.lessWithHoldingTax.toFixed(2)) }}
+                                </span>
+                                <span v-else>
+                                    {{ moneyFormat(computation.specialWHT.toFixed(2)) }}
+                                </span>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                    v-if="!computation.arena_details.email_details[0].email.includes('dea.greatpeak@gmail.com') && !computation.arena_details.email_details[0].email.includes('cristina.tabion@alpharedph.net')"
+                        class="d-flex align-center justify-end computation-wrapper_field"
+                    >
+                        <span class="font-weight-bold custom-label ctotal-label"
+                            >Net Operator's Commision, after tax:</span
                         >
                         <div
                             class="d-flex align-center computation-container_field bordertop"
@@ -365,62 +372,19 @@
                             <div
                                 class="custom-span computation-span d-flex align-center computation-total"
                             >
-                                <span class="ctotal-text">{{
-                                    moneyFormat(computation.totalCommission, true)
-                                }}</span>
+                                <span class="ctotal-text"
+                                v-if="computation.arena_details.area_code != 'MRA01'">
+                                    {{moneyFormat(computation.totalNetCommWithTax.toFixed(2))}}
+                                    <!-- {{moneyFormat(Math.floor(computation.totalNetCommWithTax * 100) / 100)}} -->
+                                </span>
+                                <span v-else>
+
+                                    <!-- {{moneyFormat(Math.floor(computation.specialTotalNetCommWithTax * 100) / 100, true)}} -->
+                                    {{moneyFormat(computation.specialTotalNetCommWithTax.toFixed(2))}}
+                                </span>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </v-row>
-        <v-row class="row-compute">
-            <div class="d-flex mobile-computebox">
-                <div>
-                    <div
-                        class="d-flex justify-center align-center kiosk-mobile_text"
-                    >
-                        <span>(Mobile)</span>
-                    </div>
-                    <div
-                        class="d-flex align-center justify-end computation-wrapper_field"
-                        style="margin-right: 2rem"
-                    >
-                        <span class="custom-label">Total M/W Bets:</span>
-                        <div
-                            class="d-flex align-center computation-container_field"
-                        >
-                            <div
-                                class="custom-span computation-span d-flex align-center"
-
-                            >
-                                <span>{{
-                                    moneyFormat(computation.totalMWMobile)
-                                }}</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div
-                        class="d-flex align-center justify-end computation-wrapper_field"
-                        style="margin-right: 2rem"
-                    >
-                        <span class="custom-label">Total Draw Bets:</span>
-                        <div
-                            class="d-flex align-center computation-container_field"
-                        >
-                            <div
-                                class="custom-span computation-span d-flex align-center"
-
-                            >
-                                <span>{{
-                                    moneyFormat(computation.drawMobile)
-                                }}</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="pa-0" style=" margin-left:-30px; padding: 0">
-
                     <div
                         class="d-flex align-center justify-end computation-wrapper_field"
                     >
@@ -479,11 +443,57 @@
                 </div>
             </div>
         </v-row>
+
+        <v-row class="row-compute">
+            <div class="d-flex mobile-computebox" :style="[!computation.arena_details.email_details[0].email.includes('dea.greatpeak@gmail.com')  && !computation.arena_details.email_details[0].email.includes('cristina.tabion@alpharedph.net') ? {'margin-top': '-85px'} : {'margin-top': '50px'}]">
+                <div>
+                    <div
+                        class="d-flex justify-center align-center kiosk-mobile_text"
+                    >
+                        <span>(Mobile)</span>
+                    </div>
+                    <div
+                        class="d-flex align-center justify-end computation-wrapper_field"
+                    >
+                        <span class="custom-label">Total M/W Bets:</span>
+                        <div
+                            class="d-flex align-center computation-container_field"
+                        >
+                            <div
+                                class="custom-span computation-span d-flex align-center"
+
+                            >
+                                <span>{{
+                                    moneyFormat(computation.totalMWMobile)
+                                }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="d-flex align-center justify-end computation-wrapper_field"
+                    >
+                        <span class="custom-label">Total Draw Bets:</span>
+                        <div
+                            class="d-flex align-center computation-container_field"
+                        >
+                            <div
+                                class="custom-span computation-span d-flex align-center"
+
+                            >
+                                <span>{{
+                                    moneyFormat(computation.drawMobile)
+                                }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </v-row>
     </v-col>
 </template>
 
 <script>
-import {moneyFormat} from "../../utility/format"
+import {moneyFormat} from "../../utility/format";
 export default {
     name: "ComputeBox",
     props: {
@@ -491,9 +501,10 @@ export default {
         editmode: Boolean,
         commissionPercent: Number,
         depositReplenishTxt: Object,
+        emailFormat: String,
     },
     data: () => ({
-        moneyFormat
-    })
+        moneyFormat,
+    }),
 };
 </script>

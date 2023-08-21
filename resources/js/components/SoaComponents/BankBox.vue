@@ -1,5 +1,6 @@
 <template>
-    <v-row
+    <v-row v-show="depositReplenishText.totalText != 'Replenish'"
+        v-if="!arenaDetails.email_details[0].email.includes('dea.greatpeak@gmail.com') && !arenaDetails.email_details[0].email.includes('cristina.tabion@alpharedph.net')"
         class="bank-container"
         style="padding: 1px !important; height: auto; margin: 0 !important"
     >
@@ -9,6 +10,7 @@
         >
             <div class="bank-headline mr-6 detailed" style="font-weight: 500">
                 <span>{{ depositReplenishText.bankTitle }}: </span>
+
             </div>
 
             <div
@@ -29,34 +31,9 @@
                     <span class="detailed">{{
                         bankAccounts.length > 0
                             ? bankAccounts[0].bank_number
-                            : "0050-1001-5156"
+                            : "0005-01-61689025-3"
                     }}</span>
-                </div>
-
-                <div v-show="bankAccounts.length >= 2" class="or">OR</div>
-                <div v-show="bankAccounts.length === 0" class="or">OR</div>
-                <div class="bank bank2">
-                    <span class="bank_account-name detailed">{{
-                        bankAccounts.length === 0
-                            ? "LUCKY 8 STAR QUEST INC."
-                            : bankAccounts.length > 1
-                            ? bankAccounts[1].account_name
-                            : ""
-                    }}</span>
-                    <span class="detailed">{{
-                        bankAccounts.length === 0
-                            ? "PBCOM"
-                            : bankAccounts.length > 1
-                            ? bankAccounts[1].bank_name
-                            : ""
-                    }}</span>
-                    <span class="detailed">{{
-                        bankAccounts.length === 0
-                            ? "0248-20-100964-4"
-                            : bankAccounts.length > 1
-                            ? bankAccounts[1].bank_number
-                            : ""
-                    }}</span>
+                    <span>{{ emailFormat }}</span>
                 </div>
             </div>
 
@@ -82,8 +59,8 @@
                             arenaDetails.bank_details.length > 0
                                 ? arenaDetails.bank_details[0].bank_name
                                 : ""
-                        }}</span
-                    >
+                        }}
+                    </span>
                     <span class="text-sm font-weight-medium detailed">{{
                         arenaDetails &&
                         arenaDetails.bank_details &&
@@ -105,6 +82,7 @@ export default {
         operatorName: String,
         editmode: Boolean,
         depositReplenishText: Object,
+        emailFormat: String,
     },
 
 };

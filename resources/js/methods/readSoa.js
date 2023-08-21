@@ -72,7 +72,7 @@ const readSoa = (event, isExcel, withSite) => {
             // Select only specific excel sheet
             const filteredWS = ws.filter(function (value, index, arr) {
                 const accReportComb = "Accounts Report Combined";
-                const summaryRep = "Summary Report";
+                const summaryRep = "REPORT FOR FA";
                 return (
                     camelCase(value) === camelCase(accReportComb) ||
                     camelCase(value) === camelCase(summaryRep)
@@ -121,8 +121,8 @@ const readSoa = (event, isExcel, withSite) => {
                         : moment(date, "DD/MM/YYYY").isValid()
                         ? moment(date, "DD/MM/YYYY").format("YYYY-MM-DD LTS")
                         : moment(date).format("YYYY-MM-DD LTS");
-                const eventCreatedUTC = ExcelDateToJSDate(arrayData[1][2].A);
-                const eventClosedUTC = ExcelDateToJSDate(arrayData[1][4].A);
+                const eventCreatedUTC = ExcelDateToJSDate(arrayData[1][2].B);
+                const eventClosedUTC = ExcelDateToJSDate(arrayData[1][4].B);
 
                 // Validate if Event date is in a correct date format
                 const isValidEventArenaDate = (stringDate) =>
@@ -176,6 +176,9 @@ const readSoa = (event, isExcel, withSite) => {
                             otherCommIntMob: 0,
                             consolCommMob: 0,
                             payOutsBalMob: 0,
+                            otherCommission: 0,
+                            consolidatorsCommission: 0,
+                            paymentForOutstandingBalance: 0,
                             ...data,
                         });
                     });
@@ -204,8 +207,6 @@ const readSoa = (event, isExcel, withSite) => {
 
                         objMobileKiosk[existingIndex].safetyFundMob =
                             item.safetyFund;
-                        objMobileKiosk[existingIndex].otherCommIntMob =
-                            item.otherCommissionIntel05;
                         objMobileKiosk[existingIndex].consolCommMob =
                             item.consolidatorsCommission;
                         objMobileKiosk[existingIndex].payOutsBalMob =
@@ -231,7 +232,6 @@ const readSoa = (event, isExcel, withSite) => {
                         helper[key].totalMWMobile = o.total;
                         helper[key].drawMobile = o.draw;
                         helper[key].safetyFundMob = o.safetyFund;
-                        helper[key].otherCommIntMob = o.otherCommissionIntel05;
                         helper[key].consolCommMob = o.consolidatorsCommission;
                         helper[key].payOutsBalMob = o.paymentForOutstandingBalance;
                     }
@@ -286,13 +286,15 @@ const readSoa = (event, isExcel, withSite) => {
                         const salesDeduction = rest.salesDeductionTablet;
                         const netOperatorsCommission =
                             rest.netOperatorsCommission;
-                        const otherCommissionIntel =
-                            rest.otherCommissionIntel05;
+                        const otherCommission =
+                            rest.otherCommission;
                         const consolidatorsCommission =
                             rest.consolidatorsCommission;
                         const safetyFund = rest.safetyFund;
                         const paymentForOutstandingBalance =
                             rest.paymentForOutstandingBalance;
+                        const otherDeductiblesFromCommission =
+                            rest.otherDeductiblesFromCommission;
                         const totalCommission = rest.totalCommission;
                         const cashLoad = rest.cashLoad;
                         const cashWithdrawal =  rest.cashWithdrawal;
@@ -348,10 +350,11 @@ const readSoa = (event, isExcel, withSite) => {
                             cancelled_unpaid: totalCUnpaid,
                             salesDeductionTablet: salesDeduction,
                             netOperatorsCommission,
-                            otherCommissionIntel05: otherCommissionIntel,
+                            otherCommission: otherCommission,
                             consolidatorsCommission,
                             safetyFund,
                             paymentForOutstandingBalance,
+                            otherDeductiblesFromCommission,
                             totalCommission,
                             total_win_mobile: totalMWMobile,
                             draw_mobile: totalDrawMobile,

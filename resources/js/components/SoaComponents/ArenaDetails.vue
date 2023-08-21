@@ -56,9 +56,9 @@
                 class="custom-span text-small fullspan d-flex align-center"
                 :class="{ 'editmode-span': editmode }"
             >
-                <span class="input-field_report computation emailFormat">{{
-                    emailFormat
-                }}</span>
+                <span class="input-field_report computation emailFormat">
+                    {{ arenaDetails.email_details[0].email }}
+                </span>
             </div>
         </div>
     </v-col>
