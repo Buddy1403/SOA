@@ -11,7 +11,7 @@
             id="reportsoaoutput"
         >
             <soa-card :item="item"></soa-card>
-            <!-- <v-card ref="soaReport">
+            <v-card ref="soaReport">
                 <v-card-title
                     class="text-h5 text-center font-weight-medium d-flex justify-center align-center pdf-title"
                 >
@@ -117,7 +117,7 @@
                         "
                     />
                 </v-card-text>
-            </v-card> -->
+            </v-card>
         </div>
     </div>
 </template>
