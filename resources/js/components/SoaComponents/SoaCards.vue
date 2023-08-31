@@ -10,7 +10,7 @@
             class="reportsoaoutput"
             id="reportsoaoutput"
         >
-            <soa-card :item="item"></soa-card>
+            <soa-card :item="item">
             <v-card ref="soaReport">
                 <v-card-title
                     class="text-h5 text-center font-weight-medium d-flex justify-center align-center pdf-title"
@@ -93,8 +93,8 @@
                         >Please be advised that replenishment are only available
                         during banking days. We allow off setting of pending
                         remittances and replenishments during non-banking
-                        days.</span
-                    >
+                        days.
+                    </span>
 
                     <BankBox
                         :bankAccounts="bankAccounts || []"
@@ -118,6 +118,7 @@
                     />
                 </v-card-text>
             </v-card>
+            </soa-card>
         </div>
     </div>
 </template>
