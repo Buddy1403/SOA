@@ -15,7 +15,7 @@ use App\Http\Controllers\Controller;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Artisan;
 
-class importController extends Controller
+class ImportController extends Controller
 {
 
     public function __construct()
